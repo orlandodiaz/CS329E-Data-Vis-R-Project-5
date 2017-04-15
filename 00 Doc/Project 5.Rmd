@@ -31,11 +31,11 @@ source("../01 Data/R_ETL.pantheria.R")
 #**Cleaned up Data Download**
 Cleaned data can be downloaded from Data.world as a .csv file. Because the dataset is so large, we filtered to only show some rows.
 
-Hosting User: ehjkim</br>
-Database: S17 DV Project 4</br>
-Dataset Name: Pantheria.csv
+Hosting User: jlee</br>
+Database: S17 DV Project 5</br>
+Dataset Name: census-pop-sex.csv
 
-Download Link: https://query.data.world/s/8ii6i7ylg3z01ki7f2tx4f81k
+Download Link: https://query.data.world/s/42bb8a11rh9kapksqyp7b7ocv
 
 ```{r}
 source("../01 Data/Accessdataworld4.R")
