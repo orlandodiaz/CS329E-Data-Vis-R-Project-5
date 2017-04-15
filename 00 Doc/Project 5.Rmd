@@ -1,0 +1,56 @@
+---
+title: "<center><b>Multispecies Trait Data</b></center>"
+author: "<center><b>Fang-Kim-Lee-Reategui</b></center>"
+output:
+  html_document:
+    toc: yes
+  html_notebook:
+    toc: yes
+---
+
+#**Introduction**
+This is our R Notebook, showing the steps we took to complete Project4 for CS 329E. This notebook includes step-by-step instructions on how to reproduce our project. To obtain our data, we used esapubs.org, an online ecological archive containing data sets on analyses of life history, ecological, and geographic trait differences among species. In this project, we analyze the information on traits to look at patterns among orders and species. 
+
+#**R Configuration**
+Below we display our sessionInfo().
+
+```{r sessionInfo}
+sessionInfo(package=NULL)
+```
+
+#**Data Description**
+All data were obtained through esapubs.org. The dataset, Pantheria, contains 100740 lines of biological data for extant and recently extinct mammalian species and was collect over a span of three years. All data came as one textfile, which we edited using Microsoft Excel.
+
+#**Cleaning Data**
+Here's our ETL file to clean our data set.
+
+```{r}
+source("../01 Data/R_ETL.pantheria.R")
+```
+
+#**Cleaned up Data Download**
+Cleaned data can be downloaded from Data.world as a .csv file. Because the dataset is so large, we filtered to only show some rows.
+
+Hosting User: ehjkim</br>
+Database: S17 DV Project 4</br>
+Dataset Name: Pantheria.csv
+
+Download Link: https://query.data.world/s/8ii6i7ylg3z01ki7f2tx4f81k
+
+```{r}
+source("../01 Data/Accessdataworld4.R")
+```
+
+#**Tableau / Tableau Action Generated Visualizations**
+**Descriptions:** Refer to visualization captions for individual descriptions.
+
+![](../03 Visualizations/LitterSizeByOrderandFamily.png)<br><br><br>
+![](../03 Visualizations/Trophiclevel.png)<br><br><br>
+![](../03 Visualizations/Adult-body-mass.png)</center>
+
+#**Shiny Visualization and Published Application**
+**Description:** A static .png of the Shiny application, as well as a link to the live published version. Looks at sexual maturity age with respect to max longevity for the orders.
+
+Published Link: https://frannyfang.shinyapps.io/shinyactions1/
+
+![](../03 Visualizations/Shiny.png)</center>
