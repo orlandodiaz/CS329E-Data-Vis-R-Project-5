@@ -8,3 +8,9 @@ census <- query(conn, dataset = "jlee/s-17-dv-project-5", type = "sql", query = 
 
 View(globalshipments)
 View(census)
+summary(globalshipments)
+summary(census)
+head(globalshipments)
+head(census)
+tail(globalshipments)
+tail(globalshipments)
