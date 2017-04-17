@@ -109,8 +109,8 @@ shinyServer(function(input, output) {
   })
   output$plot1 <- renderPlot({ggplot(df1()) + 
     theme(axis.text.x=element_text(angle=90, size=16, vjust=0.5)) + 
-    theme(axis.text.y=element_text(size=16, hjust=0.5)) +
-    geom_text(aes(x=`Sub-Category`, y=Country, label=sum_sales), size=6) +
+    theme(axis.text.y=element_text(size=5, hjust=0.5)) +
+    geom_text(aes(x=`Sub-Category`, y=Country, label=sum_sales), size=3) +
     geom_tile(aes(x=`Sub-Category`, y=Country, fill=kpi), alpha=0.50)
   })
 # End Crosstab Tab ___________________________________________________________
