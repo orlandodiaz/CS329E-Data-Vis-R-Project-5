@@ -167,7 +167,7 @@ $(document).ready(function () {
 
 
 <h1 class="title toc-ignore"><center>
-<b>Multispecies Trait Data</b>
+<b>Global Shipments Data</b>
 </center></h1>
 <h4 class="author"><em><center>
 <b>Yu-Chiao Fang, Elizabeth Kim, Seung Hoon Lee, Orlando Reategui</b>
@@ -215,6 +215,249 @@ $(document).ready(function () {
 <!-- rnb-source-begin eyJkYXRhIjoiYGBgclxuc291cmNlKFwiLi4vMDEgRGF0YS9SX0VUTC5HbG9iYWxTaGlwbWVudHMuUlwiKVxuYGBgIn0= -->
 <pre class="r"><code>source(&quot;../01 Data/R_ETL.GlobalShipments.R&quot;)</code></pre>
 <!-- rnb-source-end -->
+<!-- rnb-output-begin eyJkYXRhIjoiTG9hZGluZyByZXF1aXJlZCBwYWNrYWdlOiByZWFkclxuTG9hZGluZyByZXF1aXJlZCBwYWNrYWdlOiBwbHlyXG5QYXJzZWQgd2l0aCBjb2x1bW4gc3BlY2lmaWNhdGlvbjpcbmNvbHMoXG4gIC5kZWZhdWx0ID0gY29sX2NoYXJhY3RlcigpLFxuICBgUm93IElEYCA9IGNvbF9pbnRlZ2VyKCksXG4gIFF1YW50aXR5ID0gY29sX2ludGVnZXIoKSxcbiAgRGlzY291bnQgPSBjb2xfZG91YmxlKCksXG4gIGBTaGlwcGluZyBDb3N0YCA9IGNvbF9kb3VibGUoKVxuKVxuU2VlIHNwZWMoLi4uKSBmb3IgZnVsbCBjb2x1bW4gc3BlY2lmaWNhdGlvbnMuXG4ifQ== -->
+<pre><code>Loading required package: readr
+Loading required package: plyr
+Parsed with column specification:
+cols(
+  .default = col_character(),
+  `Row ID` = col_integer(),
+  Quantity = col_integer(),
+  Discount = col_double(),
+  `Shipping Cost` = col_double()
+)
+See spec(...) for full column specifications.</code></pre>
+<!-- rnb-output-end -->
+<!-- rnb-output-begin eyJkYXRhIjoiQ2xhc3NlcyDigJh0YmxfZGbigJksIOKAmHRibOKAmSBhbmQgJ2RhdGEuZnJhbWUnOlx0NTEyOTAgb2JzLiBvZiAgMjQgdmFyaWFibGVzOlxuICQgUm93IElEICAgICAgICA6IGludCAgNDAwOTggMjYzNDEgMjUzMzAgMTM1MjQgNDcyMjEgMjI3MzIgMzA1NzAgMzExOTIgNDAwOTkgMzYyNTggLi4uXG4gJCBPcmRlciBJRCAgICAgIDogY2hyICBcIkNBLTIwMTQtQUIxMDAxNTE0MC00MTk1NFwiIFwiSU4tMjAxNC1KUjE2MjEwNy00MTY3NVwiIFwiSU4tMjAxNC1DUjEyNzMwNy00MTkyOVwiIFwiRVMtMjAxNC1LTTE2Mzc1NDgtNDE2NjdcIiAuLi5cbiAkIE9yZGVyIERhdGUgICAgOiBjaHIgIFwiMTEvMTEvMTRcIiBcIjIvNS8xNFwiIFwiMTAvMTcvMTRcIiBcIjEvMjgvMTRcIiAuLi5cbiAkIFNoaXAgRGF0ZSAgICAgOiBjaHIgIFwiMTEvMTMvMTRcIiBcIjIvNy8xNFwiIFwiMTAvMTgvMTRcIiBcIjEvMzAvMTRcIiAuLi5cbiAkIFNoaXAgTW9kZSAgICAgOiBjaHIgIFwiRmlyc3QgQ2xhc3NcIiBcIlNlY29uZCBDbGFzc1wiIFwiRmlyc3QgQ2xhc3NcIiBcIkZpcnN0IENsYXNzXCIgLi4uXG4gJCBDdXN0b21lciBJRCAgIDogY2hyICBcIkFCLTEwMDE1MTQwMlwiIFwiSlItMTYyMTA3XCIgXCJDUi0xMjczMDdcIiBcIktNLTE2Mzc1NDhcIiAuLi5cbiAkIEN1c3RvbWVyIE5hbWUgOiBjaHIgIFwiQWFyb24gQmVyZ21hblwiIFwiSnVzdGluIFJpdHRlclwiIFwiQ3JhaWcgUmVpdGVyXCIgXCJLYXRoZXJpbmUgTXVycmF5XCIgLi4uXG4gJCBTZWdtZW50ICAgICAgIDogY2hyICBcIkNvbnN1bWVyXCIgXCJDb3Jwb3JhdGVcIiBcIkNvbnN1bWVyXCIgXCJIb21lIE9mZmljZVwiIC4uLlxuICQgUG9zdGFsIENvZGUgICA6IGNociAgXCI3MzEyMFwiIE5BIE5BIE5BIC4uLlxuICQgQ2l0eSAgICAgICAgICA6IGNociAgXCJPa2xhaG9tYSBDaXR5XCIgXCJXb2xsb25nb25nXCIgXCJCcmlzYmFuZVwiIFwiQmVybGluXCIgLi4uXG4gJCBTdGF0ZSAgICAgICAgIDogY2hyICBcIk9rbGFob21hXCIgXCJOZXcgU291dGggV2FsZXNcIiBcIlF1ZWVuc2xhbmRcIiBcIkJlcmxpblwiIC4uLlxuICQgQ291bnRyeSAgICAgICA6IGNociAgXCJVbml0ZWQgU3RhdGVzXCIgXCJBdXN0cmFsaWFcIiBcIkF1c3RyYWxpYVwiIFwiR2VybWFueVwiIC4uLlxuICQgUmVnaW9uICAgICAgICA6IGNociAgXCJDZW50cmFsIFVTXCIgXCJPY2VhbmlhXCIgXCJPY2VhbmlhXCIgXCJXZXN0ZXJuIEV1cm9wZVwiIC4uLlxuICQgTWFya2V0ICAgICAgICA6IGNociAgXCJVU0NBXCIgXCJBc2lhIFBhY2lmaWNcIiBcIkFzaWEgUGFjaWZpY1wiIFwiRXVyb3BlXCIgLi4uXG4gJCBQcm9kdWN0IElEICAgIDogY2hyICBcIlRFQy1QSC01ODE2XCIgXCJGVVItQ0gtNTM3OVwiIFwiVEVDLVBILTUzNTZcIiBcIlRFQy1QSC01MjY3XCIgLi4uXG4gJCBDYXRlZ29yeSAgICAgIDogY2hyICBcIlRlY2hub2xvZ3lcIiBcIkZ1cm5pdHVyZVwiIFwiVGVjaG5vbG9neVwiIFwiVGVjaG5vbG9neVwiIC4uLlxuICQgU3ViLUNhdGVnb3J5ICA6IGNociAgXCJQaG9uZXNcIiBcIkNoYWlyc1wiIFwiUGhvbmVzXCIgXCJQaG9uZXNcIiAuLi5cbiAkIFByb2R1Y3QgTmFtZSAgOiBjaHIgIFwiU2Ftc3VuZyBDb252b3kgM1wiIFwiTm92aW1leCBFeGVjdXRpdmUgTGVhdGhlciBBcm1jaGFpciwgQmxhY2tcIiBcIk5va2lhIFNtYXJ0IFBob25lLCB3aXRoIENhbGxlciBJRFwiIFwiTW90b3JvbGEgU21hcnQgUGhvbmUsIENvcmRsZXNzXCIgLi4uXG4gJCBTYWxlcyAgICAgICAgIDogY2hyICBcIiQyMjEuOThcIiBcIiQzLDcwOS40MFwiIFwiJDUsMTc1LjE3XCIgXCIkMiw4OTIuNTFcIiAuLi5cbiAkIFF1YW50aXR5ICAgICAgOiBpbnQgIDIgOSA5IDUgOCA1IDQgNiAyIDEgLi4uXG4gJCBEaXNjb3VudCAgICAgIDogbnVtICAwIDAuMSAwLjEgMC4xIDAgMC4xIDAgMCAwIDAuMiAuLi5cbiAkIFByb2ZpdCAgICAgICAgOiBjaHIgIFwiJDYyLjE1XCIgXCItJDI4OC43N1wiIFwiJDkxOS45N1wiIFwiLSQ5Ni41NFwiIC4uLlxuICQgU2hpcHBpbmcgQ29zdCA6IG51bSAgNDAuOCA5MjMuNiA5MTUuNSA5MTAuMiA5MDMgLi4uXG4gJCBPcmRlciBQcmlvcml0eTogY2hyICBcIkhpZ2hcIiBcIkNyaXRpY2FsXCIgXCJNZWRpdW1cIiBcIk1lZGl1bVwiIC4uLlxuIC0gYXR0cigqLCBcInNwZWNcIik9TGlzdCBvZiAyXG4gIC4uJCBjb2xzICAgOkxpc3Qgb2YgMjRcbiAgLi4gLi4kIFJvdyBJRCAgICAgICAgOiBsaXN0KClcbiAgLi4gLi4gLi4tIGF0dHIoKiwgXCJjbGFzc1wiKT0gY2hyICBcImNvbGxlY3Rvcl9pbnRlZ2VyXCIgXCJjb2xsZWN0b3JcIlxuICAuLiAuLiQgT3JkZXIgSUQgICAgICA6IGxpc3QoKVxuICAuLiAuLiAuLi0gYXR0cigqLCBcImNsYXNzXCIpPSBjaHIgIFwiY29sbGVjdG9yX2NoYXJhY3RlclwiIFwiY29sbGVjdG9yXCJcbiAgLi4gLi4kIE9yZGVyIERhdGUgICAgOiBsaXN0KClcbiAgLi4gLi4gLi4tIGF0dHIoKiwgXCJjbGFzc1wiKT0gY2hyICBcImNvbGxlY3Rvcl9jaGFyYWN0ZXJcIiBcImNvbGxlY3RvclwiXG4gIC4uIC4uJCBTaGlwIERhdGUgICAgIDogbGlzdCgpXG4gIC4uIC4uIC4uLSBhdHRyKCosIFwiY2xhc3NcIik9IGNociAgXCJjb2xsZWN0b3JfY2hhcmFjdGVyXCIgXCJjb2xsZWN0b3JcIlxuICAuLiAuLiQgU2hpcCBNb2RlICAgICA6IGxpc3QoKVxuICAuLiAuLiAuLi0gYXR0cigqLCBcImNsYXNzXCIpPSBjaHIgIFwiY29sbGVjdG9yX2NoYXJhY3RlclwiIFwiY29sbGVjdG9yXCJcbiAgLi4gLi4kIEN1c3RvbWVyIElEICAgOiBsaXN0KClcbiAgLi4gLi4gLi4tIGF0dHIoKiwgXCJjbGFzc1wiKT0gY2hyICBcImNvbGxlY3Rvcl9jaGFyYWN0ZXJcIiBcImNvbGxlY3RvclwiXG4gIC4uIC4uJCBDdXN0b21lciBOYW1lIDogbGlzdCgpXG4gIC4uIC4uIC4uLSBhdHRyKCosIFwiY2xhc3NcIik9IGNociAgXCJjb2xsZWN0b3JfY2hhcmFjdGVyXCIgXCJjb2xsZWN0b3JcIlxuICAuLiAuLiQgU2VnbWVudCAgICAgICA6IGxpc3QoKVxuICAuLiAuLiAuLi0gYXR0cigqLCBcImNsYXNzXCIpPSBjaHIgIFwiY29sbGVjdG9yX2NoYXJhY3RlclwiIFwiY29sbGVjdG9yXCJcbiAgLi4gLi4kIFBvc3RhbCBDb2RlICAgOiBsaXN0KClcbiAgLi4gLi4gLi4tIGF0dHIoKiwgXCJjbGFzc1wiKT0gY2hyICBcImNvbGxlY3Rvcl9jaGFyYWN0ZXJcIiBcImNvbGxlY3RvclwiXG4gIC4uIC4uJCBDaXR5ICAgICAgICAgIDogbGlzdCgpXG4gIC4uIC4uIC4uLSBhdHRyKCosIFwiY2xhc3NcIik9IGNociAgXCJjb2xsZWN0b3JfY2hhcmFjdGVyXCIgXCJjb2xsZWN0b3JcIlxuICAuLiAuLiQgU3RhdGUgICAgICAgICA6IGxpc3QoKVxuICAuLiAuLiAuLi0gYXR0cigqLCBcImNsYXNzXCIpPSBjaHIgIFwiY29sbGVjdG9yX2NoYXJhY3RlclwiIFwiY29sbGVjdG9yXCJcbiAgLi4gLi4kIENvdW50cnkgICAgICAgOiBsaXN0KClcbiAgLi4gLi4gLi4tIGF0dHIoKiwgXCJjbGFzc1wiKT0gY2hyICBcImNvbGxlY3Rvcl9jaGFyYWN0ZXJcIiBcImNvbGxlY3RvclwiXG4gIC4uIC4uJCBSZWdpb24gICAgICAgIDogbGlzdCgpXG4gIC4uIC4uIC4uLSBhdHRyKCosIFwiY2xhc3NcIik9IGNociAgXCJjb2xsZWN0b3JfY2hhcmFjdGVyXCIgXCJjb2xsZWN0b3JcIlxuICAuLiAuLiQgTWFya2V0ICAgICAgICA6IGxpc3QoKVxuICAuLiAuLiAuLi0gYXR0cigqLCBcImNsYXNzXCIpPSBjaHIgIFwiY29sbGVjdG9yX2NoYXJhY3RlclwiIFwiY29sbGVjdG9yXCJcbiAgLi4gLi4kIFByb2R1Y3QgSUQgICAgOiBsaXN0KClcbiAgLi4gLi4gLi4tIGF0dHIoKiwgXCJjbGFzc1wiKT0gY2hyICBcImNvbGxlY3Rvcl9jaGFyYWN0ZXJcIiBcImNvbGxlY3RvclwiXG4gIC4uIC4uJCBDYXRlZ29yeSAgICAgIDogbGlzdCgpXG4gIC4uIC4uIC4uLSBhdHRyKCosIFwiY2xhc3NcIik9IGNociAgXCJjb2xsZWN0b3JfY2hhcmFjdGVyXCIgXCJjb2xsZWN0b3JcIlxuICAuLiAuLiQgU3ViLUNhdGVnb3J5ICA6IGxpc3QoKVxuICAuLiAuLiAuLi0gYXR0cigqLCBcImNsYXNzXCIpPSBjaHIgIFwiY29sbGVjdG9yX2NoYXJhY3RlclwiIFwiY29sbGVjdG9yXCJcbiAgLi4gLi4kIFByb2R1Y3QgTmFtZSAgOiBsaXN0KClcbiAgLi4gLi4gLi4tIGF0dHIoKiwgXCJjbGFzc1wiKT0gY2hyICBcImNvbGxlY3Rvcl9jaGFyYWN0ZXJcIiBcImNvbGxlY3RvclwiXG4gIC4uIC4uJCBTYWxlcyAgICAgICAgIDogbGlzdCgpXG4gIC4uIC4uIC4uLSBhdHRyKCosIFwiY2xhc3NcIik9IGNociAgXCJjb2xsZWN0b3JfY2hhcmFjdGVyXCIgXCJjb2xsZWN0b3JcIlxuICAuLiAuLiQgUXVhbnRpdHkgICAgICA6IGxpc3QoKVxuICAuLiAuLiAuLi0gYXR0cigqLCBcImNsYXNzXCIpPSBjaHIgIFwiY29sbGVjdG9yX2ludGVnZXJcIiBcImNvbGxlY3RvclwiXG4gIC4uIC4uJCBEaXNjb3VudCAgICAgIDogbGlzdCgpXG4gIC4uIC4uIC4uLSBhdHRyKCosIFwiY2xhc3NcIik9IGNociAgXCJjb2xsZWN0b3JfZG91YmxlXCIgXCJjb2xsZWN0b3JcIlxuICAuLiAuLiQgUHJvZml0ICAgICAgICA6IGxpc3QoKVxuICAuLiAuLiAuLi0gYXR0cigqLCBcImNsYXNzXCIpPSBjaHIgIFwiY29sbGVjdG9yX2NoYXJhY3RlclwiIFwiY29sbGVjdG9yXCJcbiAgLi4gLi4kIFNoaXBwaW5nIENvc3QgOiBsaXN0KClcbiAgLi4gLi4gLi4tIGF0dHIoKiwgXCJjbGFzc1wiKT0gY2hyICBcImNvbGxlY3Rvcl9kb3VibGVcIiBcImNvbGxlY3RvclwiXG4gIC4uIC4uJCBPcmRlciBQcmlvcml0eTogbGlzdCgpXG4gIC4uIC4uIC4uLSBhdHRyKCosIFwiY2xhc3NcIik9IGNociAgXCJjb2xsZWN0b3JfY2hhcmFjdGVyXCIgXCJjb2xsZWN0b3JcIlxuICAuLiQgZGVmYXVsdDogbGlzdCgpXG4gIC4uIC4uLSBhdHRyKCosIFwiY2xhc3NcIik9IGNociAgXCJjb2xsZWN0b3JfZ3Vlc3NcIiBcImNvbGxlY3RvclwiXG4gIC4uLSBhdHRyKCosIFwiY2xhc3NcIik9IGNociBcImNvbF9zcGVjXCJcbiJ9 -->
+<pre><code>Classes ‘tbl_df’, ‘tbl’ and 'data.frame':   51290 obs. of  24 variables:
+ $ Row ID        : int  40098 26341 25330 13524 47221 22732 30570 31192 40099 36258 ...
+ $ Order ID      : chr  &quot;CA-2014-AB10015140-41954&quot; &quot;IN-2014-JR162107-41675&quot; &quot;IN-2014-CR127307-41929&quot; &quot;ES-2014-KM1637548-41667&quot; ...
+ $ Order Date    : chr  &quot;11/11/14&quot; &quot;2/5/14&quot; &quot;10/17/14&quot; &quot;1/28/14&quot; ...
+ $ Ship Date     : chr  &quot;11/13/14&quot; &quot;2/7/14&quot; &quot;10/18/14&quot; &quot;1/30/14&quot; ...
+ $ Ship Mode     : chr  &quot;First Class&quot; &quot;Second Class&quot; &quot;First Class&quot; &quot;First Class&quot; ...
+ $ Customer ID   : chr  &quot;AB-100151402&quot; &quot;JR-162107&quot; &quot;CR-127307&quot; &quot;KM-1637548&quot; ...
+ $ Customer Name : chr  &quot;Aaron Bergman&quot; &quot;Justin Ritter&quot; &quot;Craig Reiter&quot; &quot;Katherine Murray&quot; ...
+ $ Segment       : chr  &quot;Consumer&quot; &quot;Corporate&quot; &quot;Consumer&quot; &quot;Home Office&quot; ...
+ $ Postal Code   : chr  &quot;73120&quot; NA NA NA ...
+ $ City          : chr  &quot;Oklahoma City&quot; &quot;Wollongong&quot; &quot;Brisbane&quot; &quot;Berlin&quot; ...
+ $ State         : chr  &quot;Oklahoma&quot; &quot;New South Wales&quot; &quot;Queensland&quot; &quot;Berlin&quot; ...
+ $ Country       : chr  &quot;United States&quot; &quot;Australia&quot; &quot;Australia&quot; &quot;Germany&quot; ...
+ $ Region        : chr  &quot;Central US&quot; &quot;Oceania&quot; &quot;Oceania&quot; &quot;Western Europe&quot; ...
+ $ Market        : chr  &quot;USCA&quot; &quot;Asia Pacific&quot; &quot;Asia Pacific&quot; &quot;Europe&quot; ...
+ $ Product ID    : chr  &quot;TEC-PH-5816&quot; &quot;FUR-CH-5379&quot; &quot;TEC-PH-5356&quot; &quot;TEC-PH-5267&quot; ...
+ $ Category      : chr  &quot;Technology&quot; &quot;Furniture&quot; &quot;Technology&quot; &quot;Technology&quot; ...
+ $ Sub-Category  : chr  &quot;Phones&quot; &quot;Chairs&quot; &quot;Phones&quot; &quot;Phones&quot; ...
+ $ Product Name  : chr  &quot;Samsung Convoy 3&quot; &quot;Novimex Executive Leather Armchair, Black&quot; &quot;Nokia Smart Phone, with Caller ID&quot; &quot;Motorola Smart Phone, Cordless&quot; ...
+ $ Sales         : chr  &quot;$221.98&quot; &quot;$3,709.40&quot; &quot;$5,175.17&quot; &quot;$2,892.51&quot; ...
+ $ Quantity      : int  2 9 9 5 8 5 4 6 2 1 ...
+ $ Discount      : num  0 0.1 0.1 0.1 0 0.1 0 0 0 0.2 ...
+ $ Profit        : chr  &quot;$62.15&quot; &quot;-$288.77&quot; &quot;$919.97&quot; &quot;-$96.54&quot; ...
+ $ Shipping Cost : num  40.8 923.6 915.5 910.2 903 ...
+ $ Order Priority: chr  &quot;High&quot; &quot;Critical&quot; &quot;Medium&quot; &quot;Medium&quot; ...
+ - attr(*, &quot;spec&quot;)=List of 2
+  ..$ cols   :List of 24
+  .. ..$ Row ID        : list()
+  .. .. ..- attr(*, &quot;class&quot;)= chr  &quot;collector_integer&quot; &quot;collector&quot;
+  .. ..$ Order ID      : list()
+  .. .. ..- attr(*, &quot;class&quot;)= chr  &quot;collector_character&quot; &quot;collector&quot;
+  .. ..$ Order Date    : list()
+  .. .. ..- attr(*, &quot;class&quot;)= chr  &quot;collector_character&quot; &quot;collector&quot;
+  .. ..$ Ship Date     : list()
+  .. .. ..- attr(*, &quot;class&quot;)= chr  &quot;collector_character&quot; &quot;collector&quot;
+  .. ..$ Ship Mode     : list()
+  .. .. ..- attr(*, &quot;class&quot;)= chr  &quot;collector_character&quot; &quot;collector&quot;
+  .. ..$ Customer ID   : list()
+  .. .. ..- attr(*, &quot;class&quot;)= chr  &quot;collector_character&quot; &quot;collector&quot;
+  .. ..$ Customer Name : list()
+  .. .. ..- attr(*, &quot;class&quot;)= chr  &quot;collector_character&quot; &quot;collector&quot;
+  .. ..$ Segment       : list()
+  .. .. ..- attr(*, &quot;class&quot;)= chr  &quot;collector_character&quot; &quot;collector&quot;
+  .. ..$ Postal Code   : list()
+  .. .. ..- attr(*, &quot;class&quot;)= chr  &quot;collector_character&quot; &quot;collector&quot;
+  .. ..$ City          : list()
+  .. .. ..- attr(*, &quot;class&quot;)= chr  &quot;collector_character&quot; &quot;collector&quot;
+  .. ..$ State         : list()
+  .. .. ..- attr(*, &quot;class&quot;)= chr  &quot;collector_character&quot; &quot;collector&quot;
+  .. ..$ Country       : list()
+  .. .. ..- attr(*, &quot;class&quot;)= chr  &quot;collector_character&quot; &quot;collector&quot;
+  .. ..$ Region        : list()
+  .. .. ..- attr(*, &quot;class&quot;)= chr  &quot;collector_character&quot; &quot;collector&quot;
+  .. ..$ Market        : list()
+  .. .. ..- attr(*, &quot;class&quot;)= chr  &quot;collector_character&quot; &quot;collector&quot;
+  .. ..$ Product ID    : list()
+  .. .. ..- attr(*, &quot;class&quot;)= chr  &quot;collector_character&quot; &quot;collector&quot;
+  .. ..$ Category      : list()
+  .. .. ..- attr(*, &quot;class&quot;)= chr  &quot;collector_character&quot; &quot;collector&quot;
+  .. ..$ Sub-Category  : list()
+  .. .. ..- attr(*, &quot;class&quot;)= chr  &quot;collector_character&quot; &quot;collector&quot;
+  .. ..$ Product Name  : list()
+  .. .. ..- attr(*, &quot;class&quot;)= chr  &quot;collector_character&quot; &quot;collector&quot;
+  .. ..$ Sales         : list()
+  .. .. ..- attr(*, &quot;class&quot;)= chr  &quot;collector_character&quot; &quot;collector&quot;
+  .. ..$ Quantity      : list()
+  .. .. ..- attr(*, &quot;class&quot;)= chr  &quot;collector_integer&quot; &quot;collector&quot;
+  .. ..$ Discount      : list()
+  .. .. ..- attr(*, &quot;class&quot;)= chr  &quot;collector_double&quot; &quot;collector&quot;
+  .. ..$ Profit        : list()
+  .. .. ..- attr(*, &quot;class&quot;)= chr  &quot;collector_character&quot; &quot;collector&quot;
+  .. ..$ Shipping Cost : list()
+  .. .. ..- attr(*, &quot;class&quot;)= chr  &quot;collector_double&quot; &quot;collector&quot;
+  .. ..$ Order Priority: list()
+  .. .. ..- attr(*, &quot;class&quot;)= chr  &quot;collector_character&quot; &quot;collector&quot;
+  ..$ default: list()
+  .. ..- attr(*, &quot;class&quot;)= chr  &quot;collector_guess&quot; &quot;collector&quot;
+  ..- attr(*, &quot;class&quot;)= chr &quot;col_spec&quot;</code></pre>
+<!-- rnb-output-end -->
+<!-- rnb-output-begin eyJkYXRhIjoiaW52YWxpZCBmYWN0b3IgbGV2ZWwsIE5BIGdlbmVyYXRlZGludmFsaWQgZmFjdG9yIGxldmVsLCBOQSBnZW5lcmF0ZWRpbnZhbGlkIGZhY3RvciBsZXZlbCwgTkEgZ2VuZXJhdGVkaW52YWxpZCBmYWN0b3IgbGV2ZWwsIE5BIGdlbmVyYXRlZGludmFsaWQgZmFjdG9yIGxldmVsLCBOQSBnZW5lcmF0ZWRpbnZhbGlkIGZhY3RvciBsZXZlbCwgTkEgZ2VuZXJhdGVkaW52YWxpZCBmYWN0b3IgbGV2ZWwsIE5BIGdlbmVyYXRlZGludmFsaWQgZmFjdG9yIGxldmVsLCBOQSBnZW5lcmF0ZWRpbnZhbGlkIGZhY3RvciBsZXZlbCwgTkEgZ2VuZXJhdGVkaW52YWxpZCBmYWN0b3IgbGV2ZWwsIE5BIGdlbmVyYXRlZGludmFsaWQgZmFjdG9yIGxldmVsLCBOQSBnZW5lcmF0ZWRpbnZhbGlkIGZhY3RvciBsZXZlbCwgTkEgZ2VuZXJhdGVkaW52YWxpZCBmYWN0b3IgbGV2ZWwsIE5BIGdlbmVyYXRlZGludmFsaWQgZmFjdG9yIGxldmVsLCBOQSBnZW5lcmF0ZWRcbiJ9 -->
+<pre><code>invalid factor level, NA generatedinvalid factor level, NA generatedinvalid factor level, NA generatedinvalid factor level, NA generatedinvalid factor level, NA generatedinvalid factor level, NA generatedinvalid factor level, NA generatedinvalid factor level, NA generatedinvalid factor level, NA generatedinvalid factor level, NA generatedinvalid factor level, NA generatedinvalid factor level, NA generatedinvalid factor level, NA generatedinvalid factor level, NA generated</code></pre>
+<!-- rnb-output-end -->
+<!-- rnb-output-begin eyJkYXRhIjoiWzFdIFwiUm93IElEXCJcblsxXSBcIk9yZGVyIElEXCJcbiJ9 -->
+<pre><code>[1] &quot;Row ID&quot;
+[1] &quot;Order ID&quot;</code></pre>
+<!-- rnb-output-end -->
+<!-- rnb-output-begin eyJkYXRhIjoiaW52YWxpZCBmYWN0b3IgbGV2ZWwsIE5BIGdlbmVyYXRlZFxuIn0= -->
+<pre><code>invalid factor level, NA generated</code></pre>
+<!-- rnb-output-end -->
+<!-- rnb-output-begin eyJkYXRhIjoiWzFdIFwiQ3VzdG9tZXIgSURcIlxuIn0= -->
+<pre><code>[1] &quot;Customer ID&quot;</code></pre>
+<!-- rnb-output-end -->
+<!-- rnb-output-begin eyJkYXRhIjoiaW52YWxpZCBmYWN0b3IgbGV2ZWwsIE5BIGdlbmVyYXRlZFxuIn0= -->
+<pre><code>invalid factor level, NA generated</code></pre>
+<!-- rnb-output-end -->
+<!-- rnb-output-begin eyJkYXRhIjoiWzFdIFwiUG9zdGFsIENvZGVcIlxuIn0= -->
+<pre><code>[1] &quot;Postal Code&quot;</code></pre>
+<!-- rnb-output-end -->
+<!-- rnb-output-begin eyJkYXRhIjoiaW52YWxpZCBmYWN0b3IgbGV2ZWwsIE5BIGdlbmVyYXRlZFxuIn0= -->
+<pre><code>invalid factor level, NA generated</code></pre>
+<!-- rnb-output-end -->
+<!-- rnb-output-begin eyJkYXRhIjoiWzFdIFwiUHJvZHVjdCBJRFwiXG4ifQ== -->
+<pre><code>[1] &quot;Product ID&quot;</code></pre>
+<!-- rnb-output-end -->
+<!-- rnb-output-begin eyJkYXRhIjoiaW52YWxpZCBmYWN0b3IgbGV2ZWwsIE5BIGdlbmVyYXRlZFxuIn0= -->
+<pre><code>invalid factor level, NA generated</code></pre>
+<!-- rnb-output-end -->
+<!-- rnb-output-begin eyJkYXRhIjoiWzFdIFwiU2FsZXNcIlxuIn0= -->
+<pre><code>[1] &quot;Sales&quot;</code></pre>
+<!-- rnb-output-end -->
+<!-- rnb-output-begin eyJkYXRhIjoiaW52YWxpZCBmYWN0b3IgbGV2ZWwsIE5BIGdlbmVyYXRlZFxuIn0= -->
+<pre><code>invalid factor level, NA generated</code></pre>
+<!-- rnb-output-end -->
+<!-- rnb-output-begin eyJkYXRhIjoiWzFdIFwiUXVhbnRpdHlcIlxuWzFdIFwiRGlzY291bnRcIlxuWzFdIFwiUHJvZml0XCJcbiJ9 -->
+<pre><code>[1] &quot;Quantity&quot;
+[1] &quot;Discount&quot;
+[1] &quot;Profit&quot;</code></pre>
+<!-- rnb-output-end -->
+<!-- rnb-output-begin eyJkYXRhIjoiaW52YWxpZCBmYWN0b3IgbGV2ZWwsIE5BIGdlbmVyYXRlZFxuIn0= -->
+<pre><code>invalid factor level, NA generated</code></pre>
+<!-- rnb-output-end -->
+<!-- rnb-output-begin eyJkYXRhIjoiWzFdIFwiU2hpcHBpbmcgQ29zdFwiXG5DbGFzc2VzIOKAmHRibF9kZuKAmSwg4oCYdGJs4oCZIGFuZCAnZGF0YS5mcmFtZSc6XHQ1MTI5MCBvYnMuIG9mICAyNCB2YXJpYWJsZXM6XG4gJCBSb3cgSUQgICAgICAgIDogbnVtICA0MDAwOCAyNjM0MSAyNTMzMCAxMzUyNCA0NzIyMSAuLi5cbiAkIE9yZGVyIElEICAgICAgOiBudW0gIDIuMDFlKzE4IDIuMDFlKzE2IDIuMDFlKzE2IDIuMDFlKzE3IDIuMDFlKzE3IC4uLlxuICQgT3JkZXIgRGF0ZSAgICA6IEZhY3RvciB3LyAxNDMwIGxldmVscyBcIjEvMS8xMlwiLFwiMS8xLzEzXCIsLi46IDI1NiA1NzcgMTU4IDgyIDM0NyAxMDMzIDM0OSA3MzUgMjU2IDY5OCAuLi5cbiAkIFNoaXAgRGF0ZSAgICAgOiBGYWN0b3Igdy8gMTQ2NCBsZXZlbHMgXCIxLzEvMTNcIixcIjEvMS8xNFwiLC4uOiAyNzEgNTk5IDE2NyA5NiAzNTkgMTA5OSAzNjUgNzcwIDI3MSA3MjEgLi4uXG4gJCBTaGlwIE1vZGUgICAgIDogRmFjdG9yIHcvIDQgbGV2ZWxzIFwiRmlyc3QgQ2xhc3NcIiwuLjogMSAzIDEgMSAyIDMgMSA0IDEgMSAuLi5cbiAkIEN1c3RvbWVyIElEICAgOiBudW0gIDEuMDBlKzA4IDEuNjJlKzA1IDEuMjdlKzA1IDEuNjRlKzA2IDQuMDVlKzA1IC4uLlxuICQgQ3VzdG9tZXIgTmFtZSA6IEZhY3RvciB3LyA3OTYgbGV2ZWxzIFwiQWFyb24gQmVyZ21hblwiLC4uOiAxIDQxNCAxODIgNDI2IDYzNCAzNzcgNzU3IDU0MCAxIDEgLi4uXG4gJCBTZWdtZW50ICAgICAgIDogRmFjdG9yIHcvIDMgbGV2ZWxzIFwiQ29uc3VtZXJcIixcIkNvcnBvcmF0ZVwiLC4uOiAxIDIgMSAzIDEgMiAxIDEgMSAxIC4uLlxuICQgUG9zdGFsIENvZGUgICA6IG51bSAgNzMxMjAgTkEgTkEgTkEgTkEgLi4uXG4gJCBDaXR5ICAgICAgICAgIDogRmFjdG9yIHcvIDM2NDkgbGV2ZWxzIFwiQWFjaGVuXCIsXCJBYWxlblwiLC4uOiAyMzcwIDM1MzQgNTAwIDM3NyA4NjAgMzEzNCAyNTc2IDEzMjEgMjM3MCAyOTUyIC4uLlxuICQgU3RhdGUgICAgICAgICA6IEZhY3RvciB3LyAxMTAyIGxldmVscyBcIl9pYXVsaWFpXCIsXCJfaWxpbmFcIiwuLjogNzU3IDcxMiA4MzEgMTUyIDI4MSA3MTIgMTA2MiAxMDU5IDc1NyAxMDYxIC4uLlxuICQgQ291bnRyeSAgICAgICA6IEZhY3RvciB3LyAxNjUgbGV2ZWxzIFwiQWZnaGFuaXN0YW5cIiwuLjogMTU3IDcgNyA1NSAxMjUgNyAxMDUgMTA1IDE1NyAxNTcgLi4uXG4gJCBSZWdpb24gICAgICAgIDogRmFjdG9yIHcvIDIzIGxldmVscyBcIkNhbmFkYVwiLFwiQ2FyaWJiZWFuXCIsLi46IDYgMTMgMTMgMjIgMjAgMTMgMTMgMTMgNiAyMyAuLi5cbiAkIE1hcmtldCAgICAgICAgOiBGYWN0b3Igdy8gNSBsZXZlbHMgXCJBZnJpY2FcIixcIkFzaWEgUGFjaWZpY1wiLC4uOiA1IDIgMiAzIDEgMiAyIDIgNSA1IC4uLlxuICQgUHJvZHVjdCBJRCAgICA6IG51bSAgNTgxNiA1MzcwIDUzNTYgNTI2NyA2MDExIC4uLlxuICQgQ2F0ZWdvcnkgICAgICA6IEZhY3RvciB3LyAzIGxldmVscyBcIkZ1cm5pdHVyZVwiLFwiT2ZmaWNlIFN1cHBsaWVzXCIsLi46IDMgMSAzIDMgMyAzIDEgMSAxIDEgLi4uXG4gJCBTdWItQ2F0ZWdvcnkgIDogRmFjdG9yIHcvIDE3IGxldmVscyBcIkFjY2Vzc29yaWVzXCIsLi46IDE0IDYgMTQgMTQgNyAxNCA2IDE3IDUgNiAuLi5cbiAkIFByb2R1Y3QgTmFtZSAgOiBGYWN0b3Igdy8gMzc4NyBsZXZlbHMgXCIjMTAgR3VtbWVkIEZsYXAgV2hpdGUgRW52ZWxvcGVzLCAxMDAvQm94XCIsLi46IDI5NjggMjUzMSAyNTA4IDI0MTkgMzE2MyAyOTk0IDI1MzAgOTIxIDMxMDkgMTU3MyAuLi5cbiAkIFNhbGVzICAgICAgICAgOiBudW0gIDIyMSAzNzAwIDUxNzUgMjgwMyAyODMyIC4uLlxuICQgUXVhbnRpdHkgICAgICA6IG51bSAgMiAwIDAgNSA4IDUgNCA2IDIgMSAuLi5cbiAkIERpc2NvdW50ICAgICAgOiBudW0gIDAgMC4xIDAuMSAwLjEgMCAwLjEgMCAwIDAgMC4yIC4uLlxuICQgUHJvZml0ICAgICAgICA6IG51bSAgNjIuMTUgMjg4Ljc3IDEwLjA3IDYuNTQgMzExLjUyIC4uLlxuICQgU2hpcHBpbmcgQ29zdCA6IG51bSAgNDAuNzcgMjMuNjMgMTUuNCAxMC4xNiAzLjA0IC4uLlxuICQgT3JkZXIgUHJpb3JpdHk6IEZhY3RvciB3LyA0IGxldmVscyBcIkNyaXRpY2FsXCIsXCJIaWdoXCIsLi46IDIgMSA0IDQgMSAxIDEgMiAyIDIgLi4uXG4gLSBhdHRyKCosIFwic3BlY1wiKT1MaXN0IG9mIDJcbiAgLi4kIGNvbHMgICA6TGlzdCBvZiAyNFxuICAuLiAuLiQgUm93IElEICAgICAgICA6IGxpc3QoKVxuICAuLiAuLiAuLi0gYXR0cigqLCBcImNsYXNzXCIpPSBjaHIgIFwiY29sbGVjdG9yX2ludGVnZXJcIiBcImNvbGxlY3RvclwiXG4gIC4uIC4uJCBPcmRlciBJRCAgICAgIDogbGlzdCgpXG4gIC4uIC4uIC4uLSBhdHRyKCosIFwiY2xhc3NcIik9IGNociAgXCJjb2xsZWN0b3JfY2hhcmFjdGVyXCIgXCJjb2xsZWN0b3JcIlxuICAuLiAuLiQgT3JkZXIgRGF0ZSAgICA6IGxpc3QoKVxuICAuLiAuLiAuLi0gYXR0cigqLCBcImNsYXNzXCIpPSBjaHIgIFwiY29sbGVjdG9yX2NoYXJhY3RlclwiIFwiY29sbGVjdG9yXCJcbiAgLi4gLi4kIFNoaXAgRGF0ZSAgICAgOiBsaXN0KClcbiAgLi4gLi4gLi4tIGF0dHIoKiwgXCJjbGFzc1wiKT0gY2hyICBcImNvbGxlY3Rvcl9jaGFyYWN0ZXJcIiBcImNvbGxlY3RvclwiXG4gIC4uIC4uJCBTaGlwIE1vZGUgICAgIDogbGlzdCgpXG4gIC4uIC4uIC4uLSBhdHRyKCosIFwiY2xhc3NcIik9IGNociAgXCJjb2xsZWN0b3JfY2hhcmFjdGVyXCIgXCJjb2xsZWN0b3JcIlxuICAuLiAuLiQgQ3VzdG9tZXIgSUQgICA6IGxpc3QoKVxuICAuLiAuLiAuLi0gYXR0cigqLCBcImNsYXNzXCIpPSBjaHIgIFwiY29sbGVjdG9yX2NoYXJhY3RlclwiIFwiY29sbGVjdG9yXCJcbiAgLi4gLi4kIEN1c3RvbWVyIE5hbWUgOiBsaXN0KClcbiAgLi4gLi4gLi4tIGF0dHIoKiwgXCJjbGFzc1wiKT0gY2hyICBcImNvbGxlY3Rvcl9jaGFyYWN0ZXJcIiBcImNvbGxlY3RvclwiXG4gIC4uIC4uJCBTZWdtZW50ICAgICAgIDogbGlzdCgpXG4gIC4uIC4uIC4uLSBhdHRyKCosIFwiY2xhc3NcIik9IGNociAgXCJjb2xsZWN0b3JfY2hhcmFjdGVyXCIgXCJjb2xsZWN0b3JcIlxuICAuLiAuLiQgUG9zdGFsIENvZGUgICA6IGxpc3QoKVxuICAuLiAuLiAuLi0gYXR0cigqLCBcImNsYXNzXCIpPSBjaHIgIFwiY29sbGVjdG9yX2NoYXJhY3RlclwiIFwiY29sbGVjdG9yXCJcbiAgLi4gLi4kIENpdHkgICAgICAgICAgOiBsaXN0KClcbiAgLi4gLi4gLi4tIGF0dHIoKiwgXCJjbGFzc1wiKT0gY2hyICBcImNvbGxlY3Rvcl9jaGFyYWN0ZXJcIiBcImNvbGxlY3RvclwiXG4gIC4uIC4uJCBTdGF0ZSAgICAgICAgIDogbGlzdCgpXG4gIC4uIC4uIC4uLSBhdHRyKCosIFwiY2xhc3NcIik9IGNociAgXCJjb2xsZWN0b3JfY2hhcmFjdGVyXCIgXCJjb2xsZWN0b3JcIlxuICAuLiAuLiQgQ291bnRyeSAgICAgICA6IGxpc3QoKVxuICAuLiAuLiAuLi0gYXR0cigqLCBcImNsYXNzXCIpPSBjaHIgIFwiY29sbGVjdG9yX2NoYXJhY3RlclwiIFwiY29sbGVjdG9yXCJcbiAgLi4gLi4kIFJlZ2lvbiAgICAgICAgOiBsaXN0KClcbiAgLi4gLi4gLi4tIGF0dHIoKiwgXCJjbGFzc1wiKT0gY2hyICBcImNvbGxlY3Rvcl9jaGFyYWN0ZXJcIiBcImNvbGxlY3RvclwiXG4gIC4uIC4uJCBNYXJrZXQgICAgICAgIDogbGlzdCgpXG4gIC4uIC4uIC4uLSBhdHRyKCosIFwiY2xhc3NcIik9IGNociAgXCJjb2xsZWN0b3JfY2hhcmFjdGVyXCIgXCJjb2xsZWN0b3JcIlxuICAuLiAuLiQgUHJvZHVjdCBJRCAgICA6IGxpc3QoKVxuICAuLiAuLiAuLi0gYXR0cigqLCBcImNsYXNzXCIpPSBjaHIgIFwiY29sbGVjdG9yX2NoYXJhY3RlclwiIFwiY29sbGVjdG9yXCJcbiAgLi4gLi4kIENhdGVnb3J5ICAgICAgOiBsaXN0KClcbiAgLi4gLi4gLi4tIGF0dHIoKiwgXCJjbGFzc1wiKT0gY2hyICBcImNvbGxlY3Rvcl9jaGFyYWN0ZXJcIiBcImNvbGxlY3RvclwiXG4gIC4uIC4uJCBTdWItQ2F0ZWdvcnkgIDogbGlzdCgpXG4gIC4uIC4uIC4uLSBhdHRyKCosIFwiY2xhc3NcIik9IGNociAgXCJjb2xsZWN0b3JfY2hhcmFjdGVyXCIgXCJjb2xsZWN0b3JcIlxuICAuLiAuLiQgUHJvZHVjdCBOYW1lICA6IGxpc3QoKVxuICAuLiAuLiAuLi0gYXR0cigqLCBcImNsYXNzXCIpPSBjaHIgIFwiY29sbGVjdG9yX2NoYXJhY3RlclwiIFwiY29sbGVjdG9yXCJcbiAgLi4gLi4kIFNhbGVzICAgICAgICAgOiBsaXN0KClcbiAgLi4gLi4gLi4tIGF0dHIoKiwgXCJjbGFzc1wiKT0gY2hyICBcImNvbGxlY3Rvcl9jaGFyYWN0ZXJcIiBcImNvbGxlY3RvclwiXG4gIC4uIC4uJCBRdWFudGl0eSAgICAgIDogbGlzdCgpXG4gIC4uIC4uIC4uLSBhdHRyKCosIFwiY2xhc3NcIik9IGNociAgXCJjb2xsZWN0b3JfaW50ZWdlclwiIFwiY29sbGVjdG9yXCJcbiAgLi4gLi4kIERpc2NvdW50ICAgICAgOiBsaXN0KClcbiAgLi4gLi4gLi4tIGF0dHIoKiwgXCJjbGFzc1wiKT0gY2hyICBcImNvbGxlY3Rvcl9kb3VibGVcIiBcImNvbGxlY3RvclwiXG4gIC4uIC4uJCBQcm9maXQgICAgICAgIDogbGlzdCgpXG4gIC4uIC4uIC4uLSBhdHRyKCosIFwiY2xhc3NcIik9IGNociAgXCJjb2xsZWN0b3JfY2hhcmFjdGVyXCIgXCJjb2xsZWN0b3JcIlxuICAuLiAuLiQgU2hpcHBpbmcgQ29zdCA6IGxpc3QoKVxuICAuLiAuLiAuLi0gYXR0cigqLCBcImNsYXNzXCIpPSBjaHIgIFwiY29sbGVjdG9yX2RvdWJsZVwiIFwiY29sbGVjdG9yXCJcbiAgLi4gLi4kIE9yZGVyIFByaW9yaXR5OiBsaXN0KClcbiAgLi4gLi4gLi4tIGF0dHIoKiwgXCJjbGFzc1wiKT0gY2hyICBcImNvbGxlY3Rvcl9jaGFyYWN0ZXJcIiBcImNvbGxlY3RvclwiXG4gIC4uJCBkZWZhdWx0OiBsaXN0KClcbiAgLi4gLi4tIGF0dHIoKiwgXCJjbGFzc1wiKT0gY2hyICBcImNvbGxlY3Rvcl9ndWVzc1wiIFwiY29sbGVjdG9yXCJcbiAgLi4tIGF0dHIoKiwgXCJjbGFzc1wiKT0gY2hyIFwiY29sX3NwZWNcIlxuQ1JFQVRFIFRBQkxFIENTVnNQcmVFVExfZ2xvYmFsc2hpcG1lbnQgKFxuLS0gQ2hhbmdlIHRhYmxlX25hbWUgdG8gdGhlIHRhYmxlIG5hbWUgeW91IHdhbnQuXG4gT3JkZXIgRGF0ZSB2YXJjaGFyMig0MDAwKSxcbiBTaGlwIERhdGUgdmFyY2hhcjIoNDAwMCksXG4gU2hpcCBNb2RlIHZhcmNoYXIyKDQwMDApLFxuIEN1c3RvbWVyIE5hbWUgdmFyY2hhcjIoNDAwMCksXG4gU2VnbWVudCB2YXJjaGFyMig0MDAwKSxcbiBDaXR5IHZhcmNoYXIyKDQwMDApLFxuIFN0YXRlIHZhcmNoYXIyKDQwMDApLFxuIENvdW50cnkgdmFyY2hhcjIoNDAwMCksXG4gUmVnaW9uIHZhcmNoYXIyKDQwMDApLFxuIE1hcmtldCB2YXJjaGFyMig0MDAwKSxcbiBDYXRlZ29yeSB2YXJjaGFyMig0MDAwKSxcbiBTdWItQ2F0ZWdvcnkgdmFyY2hhcjIoNDAwMCksXG4gUHJvZHVjdCBOYW1lIHZhcmNoYXIyKDQwMDApLFxuIE9yZGVyIFByaW9yaXR5IHZhcmNoYXIyKDQwMDApLFxuIFJvdyBJRCBudW1iZXIoMzgsNCksXG4gT3JkZXIgSUQgbnVtYmVyKDM4LDQpLFxuIEN1c3RvbWVyIElEIG51bWJlcigzOCw0KSxcbiBQb3N0YWwgQ29kZSBudW1iZXIoMzgsNCksXG4gUHJvZHVjdCBJRCBudW1iZXIoMzgsNCksXG4gU2FsZXMgbnVtYmVyKDM4LDQpLFxuIFF1YW50aXR5IG51bWJlcigzOCw0KSxcbiBEaXNjb3VudCBudW1iZXIoMzgsNCksXG4gUHJvZml0IG51bWJlcigzOCw0KSxcbiBTaGlwcGluZyBDb3N0IG51bWJlcigzOCw0KVxuICk7XG4ifQ== -->
+<pre><code>[1] &quot;Shipping Cost&quot;
+Classes ‘tbl_df’, ‘tbl’ and 'data.frame':   51290 obs. of  24 variables:
+ $ Row ID        : num  40008 26341 25330 13524 47221 ...
+ $ Order ID      : num  2.01e+18 2.01e+16 2.01e+16 2.01e+17 2.01e+17 ...
+ $ Order Date    : Factor w/ 1430 levels &quot;1/1/12&quot;,&quot;1/1/13&quot;,..: 256 577 158 82 347 1033 349 735 256 698 ...
+ $ Ship Date     : Factor w/ 1464 levels &quot;1/1/13&quot;,&quot;1/1/14&quot;,..: 271 599 167 96 359 1099 365 770 271 721 ...
+ $ Ship Mode     : Factor w/ 4 levels &quot;First Class&quot;,..: 1 3 1 1 2 3 1 4 1 1 ...
+ $ Customer ID   : num  1.00e+08 1.62e+05 1.27e+05 1.64e+06 4.05e+05 ...
+ $ Customer Name : Factor w/ 796 levels &quot;Aaron Bergman&quot;,..: 1 414 182 426 634 377 757 540 1 1 ...
+ $ Segment       : Factor w/ 3 levels &quot;Consumer&quot;,&quot;Corporate&quot;,..: 1 2 1 3 1 2 1 1 1 1 ...
+ $ Postal Code   : num  73120 NA NA NA NA ...
+ $ City          : Factor w/ 3649 levels &quot;Aachen&quot;,&quot;Aalen&quot;,..: 2370 3534 500 377 860 3134 2576 1321 2370 2952 ...
+ $ State         : Factor w/ 1102 levels &quot;_iauliai&quot;,&quot;_ilina&quot;,..: 757 712 831 152 281 712 1062 1059 757 1061 ...
+ $ Country       : Factor w/ 165 levels &quot;Afghanistan&quot;,..: 157 7 7 55 125 7 105 105 157 157 ...
+ $ Region        : Factor w/ 23 levels &quot;Canada&quot;,&quot;Caribbean&quot;,..: 6 13 13 22 20 13 13 13 6 23 ...
+ $ Market        : Factor w/ 5 levels &quot;Africa&quot;,&quot;Asia Pacific&quot;,..: 5 2 2 3 1 2 2 2 5 5 ...
+ $ Product ID    : num  5816 5370 5356 5267 6011 ...
+ $ Category      : Factor w/ 3 levels &quot;Furniture&quot;,&quot;Office Supplies&quot;,..: 3 1 3 3 3 3 1 1 1 1 ...
+ $ Sub-Category  : Factor w/ 17 levels &quot;Accessories&quot;,..: 14 6 14 14 7 14 6 17 5 6 ...
+ $ Product Name  : Factor w/ 3787 levels &quot;#10 Gummed Flap White Envelopes, 100/Box&quot;,..: 2968 2531 2508 2419 3163 2994 2530 921 3109 1573 ...
+ $ Sales         : num  221 3700 5175 2803 2832 ...
+ $ Quantity      : num  2 0 0 5 8 5 4 6 2 1 ...
+ $ Discount      : num  0 0.1 0.1 0.1 0 0.1 0 0 0 0.2 ...
+ $ Profit        : num  62.15 288.77 10.07 6.54 311.52 ...
+ $ Shipping Cost : num  40.77 23.63 15.4 10.16 3.04 ...
+ $ Order Priority: Factor w/ 4 levels &quot;Critical&quot;,&quot;High&quot;,..: 2 1 4 4 1 1 1 2 2 2 ...
+ - attr(*, &quot;spec&quot;)=List of 2
+  ..$ cols   :List of 24
+  .. ..$ Row ID        : list()
+  .. .. ..- attr(*, &quot;class&quot;)= chr  &quot;collector_integer&quot; &quot;collector&quot;
+  .. ..$ Order ID      : list()
+  .. .. ..- attr(*, &quot;class&quot;)= chr  &quot;collector_character&quot; &quot;collector&quot;
+  .. ..$ Order Date    : list()
+  .. .. ..- attr(*, &quot;class&quot;)= chr  &quot;collector_character&quot; &quot;collector&quot;
+  .. ..$ Ship Date     : list()
+  .. .. ..- attr(*, &quot;class&quot;)= chr  &quot;collector_character&quot; &quot;collector&quot;
+  .. ..$ Ship Mode     : list()
+  .. .. ..- attr(*, &quot;class&quot;)= chr  &quot;collector_character&quot; &quot;collector&quot;
+  .. ..$ Customer ID   : list()
+  .. .. ..- attr(*, &quot;class&quot;)= chr  &quot;collector_character&quot; &quot;collector&quot;
+  .. ..$ Customer Name : list()
+  .. .. ..- attr(*, &quot;class&quot;)= chr  &quot;collector_character&quot; &quot;collector&quot;
+  .. ..$ Segment       : list()
+  .. .. ..- attr(*, &quot;class&quot;)= chr  &quot;collector_character&quot; &quot;collector&quot;
+  .. ..$ Postal Code   : list()
+  .. .. ..- attr(*, &quot;class&quot;)= chr  &quot;collector_character&quot; &quot;collector&quot;
+  .. ..$ City          : list()
+  .. .. ..- attr(*, &quot;class&quot;)= chr  &quot;collector_character&quot; &quot;collector&quot;
+  .. ..$ State         : list()
+  .. .. ..- attr(*, &quot;class&quot;)= chr  &quot;collector_character&quot; &quot;collector&quot;
+  .. ..$ Country       : list()
+  .. .. ..- attr(*, &quot;class&quot;)= chr  &quot;collector_character&quot; &quot;collector&quot;
+  .. ..$ Region        : list()
+  .. .. ..- attr(*, &quot;class&quot;)= chr  &quot;collector_character&quot; &quot;collector&quot;
+  .. ..$ Market        : list()
+  .. .. ..- attr(*, &quot;class&quot;)= chr  &quot;collector_character&quot; &quot;collector&quot;
+  .. ..$ Product ID    : list()
+  .. .. ..- attr(*, &quot;class&quot;)= chr  &quot;collector_character&quot; &quot;collector&quot;
+  .. ..$ Category      : list()
+  .. .. ..- attr(*, &quot;class&quot;)= chr  &quot;collector_character&quot; &quot;collector&quot;
+  .. ..$ Sub-Category  : list()
+  .. .. ..- attr(*, &quot;class&quot;)= chr  &quot;collector_character&quot; &quot;collector&quot;
+  .. ..$ Product Name  : list()
+  .. .. ..- attr(*, &quot;class&quot;)= chr  &quot;collector_character&quot; &quot;collector&quot;
+  .. ..$ Sales         : list()
+  .. .. ..- attr(*, &quot;class&quot;)= chr  &quot;collector_character&quot; &quot;collector&quot;
+  .. ..$ Quantity      : list()
+  .. .. ..- attr(*, &quot;class&quot;)= chr  &quot;collector_integer&quot; &quot;collector&quot;
+  .. ..$ Discount      : list()
+  .. .. ..- attr(*, &quot;class&quot;)= chr  &quot;collector_double&quot; &quot;collector&quot;
+  .. ..$ Profit        : list()
+  .. .. ..- attr(*, &quot;class&quot;)= chr  &quot;collector_character&quot; &quot;collector&quot;
+  .. ..$ Shipping Cost : list()
+  .. .. ..- attr(*, &quot;class&quot;)= chr  &quot;collector_double&quot; &quot;collector&quot;
+  .. ..$ Order Priority: list()
+  .. .. ..- attr(*, &quot;class&quot;)= chr  &quot;collector_character&quot; &quot;collector&quot;
+  ..$ default: list()
+  .. ..- attr(*, &quot;class&quot;)= chr  &quot;collector_guess&quot; &quot;collector&quot;
+  ..- attr(*, &quot;class&quot;)= chr &quot;col_spec&quot;
+CREATE TABLE CSVsPreETL_globalshipment (
+-- Change table_name to the table name you want.
+ Order Date varchar2(4000),
+ Ship Date varchar2(4000),
+ Ship Mode varchar2(4000),
+ Customer Name varchar2(4000),
+ Segment varchar2(4000),
+ City varchar2(4000),
+ State varchar2(4000),
+ Country varchar2(4000),
+ Region varchar2(4000),
+ Market varchar2(4000),
+ Category varchar2(4000),
+ Sub-Category varchar2(4000),
+ Product Name varchar2(4000),
+ Order Priority varchar2(4000),
+ Row ID number(38,4),
+ Order ID number(38,4),
+ Customer ID number(38,4),
+ Postal Code number(38,4),
+ Product ID number(38,4),
+ Sales number(38,4),
+ Quantity number(38,4),
+ Discount number(38,4),
+ Profit number(38,4),
+ Shipping Cost number(38,4)
+ );</code></pre>
+<!-- rnb-output-end -->
 <!-- rnb-chunk-end -->
 <!-- rnb-text-begin -->
 </div>
@@ -253,7 +496,7 @@ $(document).ready(function () {
 <!-- rnb-text-end -->
 </div>
 
-<div id="rmd-source-code">LS0tCnRpdGxlOiAiPGNlbnRlcj48Yj5NdWx0aXNwZWNpZXMgVHJhaXQgRGF0YTwvYj48L2NlbnRlcj4iCmF1dGhvcjogIjxjZW50ZXI+PGI+WXUtQ2hpYW8gRmFuZywgRWxpemFiZXRoIEtpbSwgU2V1bmcgSG9vbiBMZWUsIE9ybGFuZG8gUmVhdGVndWk8L2I+PC9jZW50ZXI+IgpvdXRwdXQ6CiAgaHRtbF9kb2N1bWVudDoKICAgIHRvYzogeWVzCiAgaHRtbF9ub3RlYm9vazoKICAgIHRvYzogeWVzCi0tLQoKIyoqSW50cm9kdWN0aW9uKioKVGhpcyBpcyBvdXIgUiBOb3RlYm9vaywgc2hvd2luZyB0aGUgc3RlcHMgd2UgdG9vayB0byBjb21wbGV0ZSBQcm9qZWN0IDUgZm9yIENTIDMyOUUuIFRoaXMgbm90ZWJvb2sgaW5jbHVkZXMgc3RlcC1ieS1zdGVwIGluc3RydWN0aW9ucyBvbiBob3cgdG8gcmVwcm9kdWNlIG91ciBwcm9qZWN0LiBUbyBvYnRhaW4gb3VyIGRhdGEsIHdlIHVzZWQgZGF0YS53b3JsZC4gCgojKipSIENvbmZpZ3VyYXRpb24qKgpCZWxvdyB3ZSBkaXNwbGF5IG91ciBzZXNzaW9uSW5mbygpLgoKYGBge3Igc2Vzc2lvbkluZm99CnNlc3Npb25JbmZvKHBhY2thZ2U9TlVMTCkKYGBgCgojKipEYXRhIERlc2NyaXB0aW9uKioKQWxsIGRhdGEgd2VyZSBvYnRhaW5lZCB0aHJvdWdoIGVzYXB1YnMub3JnLiBUaGUgZGF0YXNldCwgUGFudGhlcmlhLCBjb250YWlucyAxMDA3NDAgbGluZXMgb2YgYmlvbG9naWNhbCBkYXRhIGZvciBleHRhbnQgYW5kIHJlY2VudGx5IGV4dGluY3QgbWFtbWFsaWFuIHNwZWNpZXMgYW5kIHdhcyBjb2xsZWN0IG92ZXIgYSBzcGFuIG9mIHRocmVlIHllYXJzLiBBbGwgZGF0YSBjYW1lIGFzIG9uZSB0ZXh0ZmlsZSwgd2hpY2ggd2UgZWRpdGVkIHVzaW5nIE1pY3Jvc29mdCBFeGNlbC4KCiMqKkNsZWFuaW5nIERhdGEqKgpIZXJlJ3Mgb3VyIEVUTCBmaWxlIHRvIGNsZWFuIG91ciBkYXRhIHNldC4KCmBgYHtyfQpzb3VyY2UoIi4uLzAxIERhdGEvUl9FVEwuR2xvYmFsU2hpcG1lbnRzLlIiKQpgYGAKCiMqKkNsZWFuZWQgdXAgRGF0YSBEb3dubG9hZCoqCkNsZWFuZWQgZGF0YSBjYW4gYmUgZG93bmxvYWRlZCBmcm9tIERhdGEud29ybGQgYXMgYSAuY3N2IGZpbGUuIEJlY2F1c2UgdGhlIGRhdGFzZXQgaXMgc28gbGFyZ2UsIHdlIGZpbHRlcmVkIHRvIG9ubHkgc2hvdyBzb21lIHJvd3MuCgpIb3N0aW5nIFVzZXI6IGpsZWU8L2JyPgpEYXRhYmFzZTogUzE3IERWIFByb2plY3QgNTwvYnI+CkRhdGFzZXQgTmFtZTogZ2xvYmFsc2hpcG1lbnRzLmNzdgoKRG93bmxvYWQgTGluazogaHR0cHM6Ly9xdWVyeS5kYXRhLndvcmxkL3MvYzhlYnFqYmpzd3A3dnFsemdrZ201bWcwZwoKYGBge3J9CnNvdXJjZSgiLi4vMDEgRGF0YS9BY2Nlc3NkYXRhd29ybGQ1LlIiKQpgYGAKCiMqKlRhYmxlYXUgLyBUYWJsZWF1IEFjdGlvbiBHZW5lcmF0ZWQgVmlzdWFsaXphdGlvbnMqKgoqKkRlc2NyaXB0aW9uczoqKiBSZWZlciB0byB2aXN1YWxpemF0aW9uIGNhcHRpb25zIGZvciBpbmRpdmlkdWFsIGRlc2NyaXB0aW9ucy4KCiFbXSguLi8wMyBWaXN1YWxpemF0aW9ucy9Dcm9zc3RhYiAxIC5wbmcpPGJyPjxicj48YnI+CiFbXSguLi8wMyBWaXN1YWxpemF0aW9ucy9Dcm9zc3RhYiAxIE1hcC5wbmcpPGJyPjxicj48YnI+CiFbXSguLi8wMyBWaXN1YWxpemF0aW9ucy9Dcm9zc3RhYiAyIC5wbmcpPC9jZW50ZXI+CiFbXSguLi8wMyBWaXN1YWxpemF0aW9ucy9Dcm9zc3RhYiAyIE1hcC5wbmcpPC9jZW50ZXI+CiFbXSguLi8wMyBWaXN1YWxpemF0aW9ucy9Dcm9zc3RhYiAzIC5wbmcpPC9jZW50ZXI+CiFbXSguLi8wMyBWaXN1YWxpemF0aW9ucy9Dcm9zc3RhYiAzIE1hcC5wbmcpPC9jZW50ZXI+CgojKipTaGlueSBWaXN1YWxpemF0aW9uIGFuZCBQdWJsaXNoZWQgQXBwbGljYXRpb24qKgoqKkRlc2NyaXB0aW9uOioqIEEgc3RhdGljIC5wbmcgb2YgdGhlIFNoaW55IGFwcGxpY2F0aW9uLCBhcyB3ZWxsIGFzIGEgbGluayB0byB0aGUgbGl2ZSBwdWJsaXNoZWQgdmVyc2lvbi4gQ3Jvc3N0YWIgMSBzdW1zIHVwIHRoZSBzaGlwcGluZyBjb3N0cyBieSBzZWdtZW50IGFuZCBzdGF0ZS4gVGhlIGRhdGEgaXMgZmlsdGVyZWQgb24gQ291bnRyeSA9IFVuaXRlZCBTdGF0ZXMgYW5kIGRpc2xheXMgdGhlIElOIG9mIFR3byBIaWdoZXN0IFNoaXBwaW5nIFNlZ21lbnRzLiBDcm9zc3RhYiAyIGJyZWFrcyBkb3duIHRoZSBzdW0gb2Ygc2FsZXMgYnkgc2hpcCBtb2RlIGFuZCBzdGF0ZS4gVGhlIGNvbG9yIGhpZ2hsaWdodHMgS1BJIC0gU2FsZXMgcGVyIHBlcnNvbiBMb3cgdG8gSGlnaC4gQWdhaW4sIHRoZSBkYXRhIGlzIGZpbHRlcmVkIG9uIENvdW50cnkgPSBVbml0ZWQgU3RhdGVzIGFuZCBJTiBmb3IgVHdvIExlYXN0IFVzZWQgU2hpcHBpbmcgTW9kZS4gTGFzdGx5LCBDcm9zc3RhYiAzIGNvdmVycyBzdW0gb2Ygc2FsZXMgYnkgc3ViLWNhdGVnb3J5IGFuZCBjb3VudHJ5LiBLUEkgcmVmbGVjdHMgdGhlIHByb2ZpdCB0byBzYWxlcyByYXRpbyBsb3cgdG8gaGlnaC4gVGhlIGRhdGEgaXMgZmlsdGVyZWQgb24gSU4gZm9yIEZpdmUgSGlnaGVzdCBTdWItQ2F0ZWdvcmllcy4KUHVibGlzaGVkIExpbms6IGh0dHBzOi8vZnJhbm55ZmFuZy5zaGlueWFwcHMuaW8vY3Jvc3N0YWIyLyBodHRwczovL2ZyYW5ueWZhbmcuc2hpbnlhcHBzLmlvL0Nyb3NzdGFiMy8gCgohW10oLi4vMDMgVmlzdWFsaXphdGlvbnMvU2hpbnkyLlBORyk8L2NlbnRlcj4KIVtdKC4uLzAzIFZpc3VhbGl6YXRpb25zL1NoaW55My5QTkcpPC9jZW50ZXI+Cg==</div>
+<div id="rmd-source-code">LS0tCnRpdGxlOiAiPGNlbnRlcj48Yj5HbG9iYWwgU2hpcG1lbnRzIERhdGE8L2I+PC9jZW50ZXI+IgphdXRob3I6ICI8Y2VudGVyPjxiPll1LUNoaWFvIEZhbmcsIEVsaXphYmV0aCBLaW0sIFNldW5nIEhvb24gTGVlLCBPcmxhbmRvIFJlYXRlZ3VpPC9iPjwvY2VudGVyPiIKb3V0cHV0OgogIGh0bWxfZG9jdW1lbnQ6CiAgICB0b2M6IHllcwogIGh0bWxfbm90ZWJvb2s6CiAgICB0b2M6IHllcwotLS0KCiMqKkludHJvZHVjdGlvbioqClRoaXMgaXMgb3VyIFIgTm90ZWJvb2ssIHNob3dpbmcgdGhlIHN0ZXBzIHdlIHRvb2sgdG8gY29tcGxldGUgUHJvamVjdCA1IGZvciBDUyAzMjlFLiBUaGlzIG5vdGVib29rIGluY2x1ZGVzIHN0ZXAtYnktc3RlcCBpbnN0cnVjdGlvbnMgb24gaG93IHRvIHJlcHJvZHVjZSBvdXIgcHJvamVjdC4gVG8gb2J0YWluIG91ciBkYXRhLCB3ZSB1c2VkIGRhdGEud29ybGQuIAoKIyoqUiBDb25maWd1cmF0aW9uKioKQmVsb3cgd2UgZGlzcGxheSBvdXIgc2Vzc2lvbkluZm8oKS4KCmBgYHtyIHNlc3Npb25JbmZvfQpzZXNzaW9uSW5mbyhwYWNrYWdlPU5VTEwpCmBgYAoKIyoqRGF0YSBEZXNjcmlwdGlvbioqCkFsbCBkYXRhIHdlcmUgb2J0YWluZWQgdGhyb3VnaCBlc2FwdWJzLm9yZy4gVGhlIGRhdGFzZXQsIFBhbnRoZXJpYSwgY29udGFpbnMgMTAwNzQwIGxpbmVzIG9mIGJpb2xvZ2ljYWwgZGF0YSBmb3IgZXh0YW50IGFuZCByZWNlbnRseSBleHRpbmN0IG1hbW1hbGlhbiBzcGVjaWVzIGFuZCB3YXMgY29sbGVjdCBvdmVyIGEgc3BhbiBvZiB0aHJlZSB5ZWFycy4gQWxsIGRhdGEgY2FtZSBhcyBvbmUgdGV4dGZpbGUsIHdoaWNoIHdlIGVkaXRlZCB1c2luZyBNaWNyb3NvZnQgRXhjZWwuCgojKipDbGVhbmluZyBEYXRhKioKSGVyZSdzIG91ciBFVEwgZmlsZSB0byBjbGVhbiBvdXIgZGF0YSBzZXQuCgpgYGB7cn0Kc291cmNlKCIuLi8wMSBEYXRhL1JfRVRMLkdsb2JhbFNoaXBtZW50cy5SIikKYGBgCgojKipDbGVhbmVkIHVwIERhdGEgRG93bmxvYWQqKgpDbGVhbmVkIGRhdGEgY2FuIGJlIGRvd25sb2FkZWQgZnJvbSBEYXRhLndvcmxkIGFzIGEgLmNzdiBmaWxlLiBCZWNhdXNlIHRoZSBkYXRhc2V0IGlzIHNvIGxhcmdlLCB3ZSBmaWx0ZXJlZCB0byBvbmx5IHNob3cgc29tZSByb3dzLgoKSG9zdGluZyBVc2VyOiBqbGVlPC9icj4KRGF0YWJhc2U6IFMxNyBEViBQcm9qZWN0IDU8L2JyPgpEYXRhc2V0IE5hbWU6IGdsb2JhbHNoaXBtZW50cy5jc3YKCkRvd25sb2FkIExpbms6IGh0dHBzOi8vcXVlcnkuZGF0YS53b3JsZC9zL2M4ZWJxamJqc3dwN3ZxbHpna2dtNW1nMGcKCmBgYHtyfQpzb3VyY2UoIi4uLzAxIERhdGEvQWNjZXNzZGF0YXdvcmxkNS5SIikKYGBgCgojKipUYWJsZWF1IC8gVGFibGVhdSBBY3Rpb24gR2VuZXJhdGVkIFZpc3VhbGl6YXRpb25zKioKKipEZXNjcmlwdGlvbnM6KiogUmVmZXIgdG8gdmlzdWFsaXphdGlvbiBjYXB0aW9ucyBmb3IgaW5kaXZpZHVhbCBkZXNjcmlwdGlvbnMuCgohW10oLi4vMDMgVmlzdWFsaXphdGlvbnMvQ3Jvc3N0YWIgMSAucG5nKTxicj48YnI+PGJyPgohW10oLi4vMDMgVmlzdWFsaXphdGlvbnMvQ3Jvc3N0YWIgMSBNYXAucG5nKTxicj48YnI+PGJyPgohW10oLi4vMDMgVmlzdWFsaXphdGlvbnMvQ3Jvc3N0YWIgMiAucG5nKTwvY2VudGVyPgohW10oLi4vMDMgVmlzdWFsaXphdGlvbnMvQ3Jvc3N0YWIgMiBNYXAucG5nKTwvY2VudGVyPgohW10oLi4vMDMgVmlzdWFsaXphdGlvbnMvQ3Jvc3N0YWIgMyAucG5nKTwvY2VudGVyPgohW10oLi4vMDMgVmlzdWFsaXphdGlvbnMvQ3Jvc3N0YWIgMyBNYXAucG5nKTwvY2VudGVyPgoKIyoqU2hpbnkgVmlzdWFsaXphdGlvbiBhbmQgUHVibGlzaGVkIEFwcGxpY2F0aW9uKioKKipEZXNjcmlwdGlvbjoqKiBBIHN0YXRpYyAucG5nIG9mIHRoZSBTaGlueSBhcHBsaWNhdGlvbiwgYXMgd2VsbCBhcyBhIGxpbmsgdG8gdGhlIGxpdmUgcHVibGlzaGVkIHZlcnNpb24uIENyb3NzdGFiIDEgc3VtcyB1cCB0aGUgc2hpcHBpbmcgY29zdHMgYnkgc2VnbWVudCBhbmQgc3RhdGUuIFRoZSBkYXRhIGlzIGZpbHRlcmVkIG9uIENvdW50cnkgPSBVbml0ZWQgU3RhdGVzIGFuZCBkaXNsYXlzIHRoZSBJTiBvZiBUd28gSGlnaGVzdCBTaGlwcGluZyBTZWdtZW50cy4gQ3Jvc3N0YWIgMiBicmVha3MgZG93biB0aGUgc3VtIG9mIHNhbGVzIGJ5IHNoaXAgbW9kZSBhbmQgc3RhdGUuIFRoZSBjb2xvciBoaWdobGlnaHRzIEtQSSAtIFNhbGVzIHBlciBwZXJzb24gTG93IHRvIEhpZ2guIEFnYWluLCB0aGUgZGF0YSBpcyBmaWx0ZXJlZCBvbiBDb3VudHJ5ID0gVW5pdGVkIFN0YXRlcyBhbmQgSU4gZm9yIFR3byBMZWFzdCBVc2VkIFNoaXBwaW5nIE1vZGUuIExhc3RseSwgQ3Jvc3N0YWIgMyBjb3ZlcnMgc3VtIG9mIHNhbGVzIGJ5IHN1Yi1jYXRlZ29yeSBhbmQgY291bnRyeS4gS1BJIHJlZmxlY3RzIHRoZSBwcm9maXQgdG8gc2FsZXMgcmF0aW8gbG93IHRvIGhpZ2guIFRoZSBkYXRhIGlzIGZpbHRlcmVkIG9uIElOIGZvciBGaXZlIEhpZ2hlc3QgU3ViLUNhdGVnb3JpZXMuClB1Ymxpc2hlZCBMaW5rOiBodHRwczovL2ZyYW5ueWZhbmcuc2hpbnlhcHBzLmlvL2Nyb3NzdGFiMi8gaHR0cHM6Ly9mcmFubnlmYW5nLnNoaW55YXBwcy5pby9Dcm9zc3RhYjMvIAoKIVtdKC4uLzAzIFZpc3VhbGl6YXRpb25zL1NoaW55Mi5QTkcpPC9jZW50ZXI+CiFbXSguLi8wMyBWaXN1YWxpemF0aW9ucy9TaGlueTMuUE5HKTwvY2VudGVyPgo=</div>
 
 
 

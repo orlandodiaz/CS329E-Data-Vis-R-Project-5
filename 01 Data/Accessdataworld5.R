@@ -6,8 +6,6 @@ require(data.world)
 conn <- data.world()
 census <- query(conn, dataset = "jlee/s-17-dv-project-5", type = "sql", query = "SELECT * FROM `census-pop-sex.csv/census-pop-sex` LIMIT 10")
 
-View(globalshipments)
-View(census)
 summary(globalshipments)
 summary(census)
 head(globalshipments)
