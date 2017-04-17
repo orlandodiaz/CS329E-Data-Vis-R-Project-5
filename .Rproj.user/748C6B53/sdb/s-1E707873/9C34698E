@@ -1,0 +1,20 @@
+{
+    "collab_server" : "",
+    "contents" : "require(data.world)\nconn <- data.world()\nglobalshipments <- query(conn, dataset=\"jlee/s-17-dv-project-5\", type = \"sql\",query=\"SELECT * FROM `globalshipments.csv/globalshipments` LIMIT 10\")\n\nrequire(data.world)\nconn <- data.world()\ncensus <- query(conn, dataset = \"jlee/s-17-dv-project-5\", type = \"sql\", query = \"SELECT * FROM `census-pop-sex.csv/census-pop-sex` LIMIT 10\")\n\nView(globalshipments)\nView(census)",
+    "created" : 1492467749105.000,
+    "dirty" : false,
+    "encoding" : "UTF-8",
+    "folds" : "",
+    "hash" : "2004157862",
+    "id" : "9C34698E",
+    "lastKnownWriteTime" : 1492467729,
+    "last_content_update" : 1492467729,
+    "path" : "~/DV_Project5/01 Data/Accessdataworld5.R",
+    "project_path" : "01 Data/Accessdataworld5.R",
+    "properties" : {
+    },
+    "relative_order" : 3,
+    "source_on_save" : false,
+    "source_window" : "",
+    "type" : "r_source"
+}
