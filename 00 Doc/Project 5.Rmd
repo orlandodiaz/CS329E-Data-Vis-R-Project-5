@@ -1,6 +1,6 @@
 ---
 title: "<center><b>Multispecies Trait Data</b></center>"
-author: "<center><b>Fang-Kim-Lee-Reategui</b></center>"
+author: "<center><b>Yu-Chiao Fang, Elizabeth Kim, Seung Hoon Lee, Orlando Reategui</b></center>"
 output:
   html_document:
     toc: yes
@@ -9,7 +9,7 @@ output:
 ---
 
 #**Introduction**
-This is our R Notebook, showing the steps we took to complete Project4 for CS 329E. This notebook includes step-by-step instructions on how to reproduce our project. To obtain our data, we used esapubs.org, an online ecological archive containing data sets on analyses of life history, ecological, and geographic trait differences among species. In this project, we analyze the information on traits to look at patterns among orders and species. 
+This is our R Notebook, showing the steps we took to complete Project 5 for CS 329E. This notebook includes step-by-step instructions on how to reproduce our project. To obtain our data, we used data.world. 
 
 #**R Configuration**
 Below we display our sessionInfo().
@@ -25,7 +25,7 @@ All data were obtained through esapubs.org. The dataset, Pantheria, contains 100
 Here's our ETL file to clean our data set.
 
 ```{r}
-source("../01 Data/R_ETL.pantheria.R")
+source("../01 Data/R_ETL.panth.R")
 ```
 
 #**Cleaned up Data Download**

@@ -1,0 +1,124 @@
+"0","```r
+source(\"../01 Data/Access Dataworld dv3.R\")
+```"
+"1","*   Trying 128.83.144.203...
+* TCP_NODELAY set
+* Connected to oraclerest.cs.utexas.edu (128.83.144.203) port 5000 (#0)
+> GET /rest/native/?query=%22select%20*%20from%20Pantheria%22 HTTP/1.1
+Host: oraclerest.cs.utexas.edu:5000
+Accept: */*
+DB: jdbc:data:world:sql:jlee:s-17-edv-project-3
+USER: jlee
+PASS: eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJwcm9kLXVzZXItY2xpZW50OmpsZWUiLCJpc3MiOiJhZ2VudDpqbGVlOjphYTAxYzZmMi1hMTBhLTRhYzQtOTU3Yi1lZmQwNDM4OTI0YzAiLCJpYXQiOjE0ODQ2OTcyMjcsInJvbGUiOlsidXNlcl9hcGlfd3JpdGUiLCJ1c2VyX2FwaV9yZWFkIl0sImdlbmVyYWwtcHVycG9zZSI6dHJ1ZX0.gnpazqWHViw7QcLMWccGADp4i8rmzRFwx7tp3OknW0T4q9JhJFKP46h-mQJL1GKku9rnHN8dXJGQ_WbFPfJiLw
+MODE: native_mode
+MODEL: model
+returnDimensions: False
+returnFor: JSON
+
+* HTTP 1.0, assume close after body
+< HTTP/1.0 200 OK
+< Content-Type: text/html; charset=utf-8
+< Content-Length: 2464716
+< Server: Werkzeug/0.11.4 Python/2.7.1b2
+< Date: Fri, 03 Mar 2017 22:02:27 GMT
+< 
+* Curl_http_done: called premature == 0
+* Closing connection 0
+"
+"1","           v_0                     v_1                 v_2              v_3      
+ Rodentia    :2277   Muridae         : 730   Crocidura   : 172   australis:  15  
+ Chiroptera  :1116   Cricetidae      : 681   Myotis      : 103   thomasi  :  15  
+ Soricomorpha: 428   Vespertilionidae: 407   Rhinolophus :  77   macrotis :  14  
+ Primates    : 376   Soricidae       : 376   Sorex       :  77   major    :  14  
+ Carnivora   : 286   Sciuridae       : 278   Hipposideros:  67   grandis  :  11  
+ Artiodactyla: 240   Pteropodidae    : 186   Rattus      :  66   minor    :  11  
+ (Other)     : 693   (Other)         :2758   (Other)     :4854   (Other)  :5336  
+                   v_4            v_5              v_6                 v_7         
+ Abditomys latidens  :   1   Min.   :0.0000   Min.   :        0   Min.   :  0.000  
+ Abeomelomys sevia   :   1   1st Qu.:0.0000   1st Qu.:        0   1st Qu.:  0.000  
+ Abrawayaomys ruschii:   1   Median :0.0000   Median :       21   Median :  0.000  
+ Abrocoma bennettii  :   1   Mean   :0.5583   Mean   :   109455   Mean   :  8.769  
+ Abrocoma boliviensis:   1   3rd Qu.:1.0000   3rd Qu.:      244   3rd Qu.:  0.000  
+ Abrocoma budini     :   1   Max.   :3.0000   Max.   :154321312   Max.   :246.000  
+ (Other)             :5410                                                         
+      v_8               v_9               v_10              v_11         
+ Min.   :    0.0   Min.   :  0.000   Min.   :   0.00   Min.   :     0.0  
+ 1st Qu.:    0.0   1st Qu.:  0.000   1st Qu.:   0.00   1st Qu.:     0.0  
+ Median :    0.0   Median :  0.000   Median :   0.00   Median :     0.0  
+ Mean   :  191.5   Mean   :  1.175   Mean   :  62.88   Mean   :   194.6  
+ 3rd Qu.:  121.8   3rd Qu.:  0.000   3rd Qu.:   0.00   3rd Qu.:     0.0  
+ Max.   :30480.0   Max.   :153.500   Max.   :5456.75   Max.   :113712.0  
+                                                                         
+      v_12               v_13            v_14               v_15             v_16       
+ Min.   :     0.0   Min.   :0.000   Min.   :   0.000   Min.   :  0.00   Min.   :0.0000  
+ 1st Qu.:     0.0   1st Qu.:0.000   1st Qu.:   0.000   1st Qu.:  0.00   1st Qu.:0.0000  
+ Median :     0.0   Median :0.000   Median :   0.000   Median :  0.00   Median :1.0000  
+ Mean   :   753.8   Mean   :1.035   Mean   :   9.642   Mean   : 26.42   Mean   :0.6562  
+ 3rd Qu.:     0.0   3rd Qu.:2.000   3rd Qu.:   0.000   3rd Qu.:  1.24   3rd Qu.:1.0000  
+ Max.   :407000.0   Max.   :8.000   Max.   :5248.080   Max.   :660.00   Max.   :4.0000  
+                                                                                        
+      v_17               v_18                v_19              v_20       
+ Min.   :    0.00   Min.   :     0.00   Min.   :   0.00   Min.   : 0.000  
+ 1st Qu.:    0.00   1st Qu.:     0.00   1st Qu.:   0.00   1st Qu.: 0.000  
+ Median :    0.00   Median :     0.00   Median :   0.00   Median : 0.000  
+ Mean   :   29.15   Mean   :    37.51   Mean   :  41.48   Mean   : 1.057  
+ 3rd Qu.:    0.00   3rd Qu.:     0.00   3rd Qu.:   0.00   3rd Qu.: 1.410  
+ Max.   :77270.47   Max.   :112240.72   Max.   :2007.50   Max.   :16.800  
+                                                                          
+      v_21              v_22              v_23              v_24              v_25        
+ Min.   : 0.0000   Min.   :   0.00   Min.   :      0   Min.   :   0.00   Min.   :    0.0  
+ 1st Qu.: 0.0000   1st Qu.:   0.00   1st Qu.:      0   1st Qu.:   0.00   1st Qu.:    0.0  
+ Median : 0.0000   Median :   0.00   Median :      0   Median :   0.00   Median :    0.0  
+ Mean   : 0.3098   Mean   :  34.94   Mean   :   1627   Mean   :  13.05   Mean   :  131.7  
+ 3rd Qu.: 0.0000   3rd Qu.:   0.00   3rd Qu.:      0   3rd Qu.:   0.00   3rd Qu.:    0.0  
+ Max.   :10.0000   Max.   :1470.00   Max.   :2738613   Max.   :7500.00   Max.   :57067.8  
+                                                                                          
+      v_26               v_27           v_28               v_29              v_30       
+ Min.   :     0.0   Min.   :   0   Min.   :  0.0000   Min.   : 0.0000   Min.   :0.0000  
+ 1st Qu.:     0.0   1st Qu.:   0   1st Qu.:  0.0000   1st Qu.: 0.0000   1st Qu.:0.0000  
+ Median :     0.0   Median :   0   Median :  0.0000   Median : 0.0000   Median :0.0000  
+ Mean   :   231.5   Mean   : 121   Mean   :  0.8639   Mean   : 0.6368   Mean   :0.7622  
+ 3rd Qu.:     0.0   3rd Qu.:   0   3rd Qu.:  0.0000   3rd Qu.: 0.0000   3rd Qu.:2.0000  
+ Max.   :500500.0   Max.   :6041   Max.   :110.0000   Max.   :26.0000   Max.   :2.0000  
+                                                                                        
+      v_31             v_32              v_33               v_34                  v_35     
+ Min.   :0.0000   Min.   :   0.00   Min.   :       0   Min.   :    0.000   -999     :1250  
+ 1st Qu.:0.0000   1st Qu.:   0.00   1st Qu.:       0   1st Qu.:    0.000   2655     : 268  
+ Median :0.0000   Median :   0.00   Median :       0   Median :    0.000   1658;2151: 127  
+ Mean   :0.7714   Mean   :  24.09   Mean   :    4485   Mean   :    7.801   2151;2655:  83  
+ 3rd Qu.:2.0000   3rd Qu.:   0.00   3rd Qu.:       0   3rd Qu.:    0.000   1297;2655:  80  
+ Max.   :3.0000   Max.   :1260.81   Max.   :16000000   Max.   :12000.000   1297     :  78  
+                                                                           (Other)  :3530  
+      v_36                v_37              v_38                v_39        
+ Min.   :      0.0   Min.   :0.00000   Min.   :      0.0   Min.   :      0  
+ 1st Qu.:      0.0   1st Qu.:0.00000   1st Qu.:      0.0   1st Qu.:      0  
+ Median :      0.0   Median :0.00000   Median :      0.0   Median :      0  
+ Mean   :    264.9   Mean   :0.09963   Mean   :    817.6   Mean   :   1579  
+ 3rd Qu.:      0.0   3rd Qu.:0.00000   3rd Qu.:      0.0   3rd Qu.:      0  
+ Max.   :1061721.2   Max.   :5.10000   Max.   :2458003.8   Max.   :6305530  
+                                                                            
+      v_40               v_41            v_42            v_43            v_44       
+ Min.   :       0   Min.   : 0.00   Min.   : 0.00   Min.   : 0.00   Min.   :  0.00  
+ 1st Qu.:    4429   1st Qu.: 2.50   1st Qu.: 3.30   1st Qu.: 1.63   1st Qu.: 26.20  
+ Median :  118067   Median :12.18   Median :11.64   Median :10.09   Median : 55.61  
+ Mean   : 1351902   Mean   :17.03   Mean   :15.36   Mean   :14.55   Mean   : 65.11  
+ 3rd Qu.: 1012995   3rd Qu.:27.05   3rd Qu.:25.65   3rd Qu.:23.78   3rd Qu.:110.26  
+ Max.   :63034304   Max.   :83.62   Max.   :70.78   Max.   :71.68   Max.   :180.00  
+                                                                                    
+      v_45              v_46              v_47              v_48              v_49        
+ Min.   :  0.000   Min.   :   0.00   Min.   :   0.00   Min.   :   0.00   Min.   :   0.00  
+ 1st Qu.:  8.148   1st Qu.:  10.96   1st Qu.:   0.00   1st Qu.:   4.17   1st Qu.:   0.00  
+ Median : 52.615   Median :  60.01   Median :   1.00   Median :  25.32   Median :   1.00  
+ Mean   : 57.485   Mean   :  60.43   Mean   :  12.36   Mean   :  63.50   Mean   :  14.32  
+ 3rd Qu.:104.790   3rd Qu.: 104.74   3rd Qu.:   4.00   3rd Qu.:  68.49   3rd Qu.:   8.00  
+ Max.   :180.000   Max.   :1004.00   Max.   :1110.00   Max.   :2060.50   Max.   :1110.00  
+                                                                                          
+      v_50               v_51             v_52             v_53              v_54       
+ Min.   :0.000000   Min.   :  0.00   Min.   :  0.00   Min.   :   0.00   Min.   :   0.0  
+ 1st Qu.:0.007697   1st Qu.: 20.76   1st Qu.: 61.64   1st Qu.:  58.64   1st Qu.: 516.1  
+ Median :0.080000   Median : 80.82   Median :188.54   Median : 705.04   Median :1342.1  
+ Mean   :0.080633   Mean   : 95.12   Mean   :153.33   Mean   : 723.33   Mean   :1054.9  
+ 3rd Qu.:0.120000   3rd Qu.:150.29   3rd Qu.:238.05   3rd Qu.:1269.03   3rd Qu.:1562.4  
+ Max.   :8.550050   Max.   :461.00   Max.   :350.00   Max.   :1858.56   Max.   :2107.0  
+                                                                                        
+"
