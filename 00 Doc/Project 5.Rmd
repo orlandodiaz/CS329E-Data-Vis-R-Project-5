@@ -25,7 +25,7 @@ All data were obtained through esapubs.org. The dataset, Pantheria, contains 100
 Here's our ETL file to clean our data set.
 
 ```{r}
-source("../01 Data/R_ETL.panth.R")
+source("../01 Data/R_ETL.GlobalShipments.R")
 ```
 
 #**Cleaned up Data Download**
@@ -33,12 +33,12 @@ Cleaned data can be downloaded from Data.world as a .csv file. Because the datas
 
 Hosting User: jlee</br>
 Database: S17 DV Project 5</br>
-Dataset Name: census-pop-sex.csv
+Dataset Name: globalshipments.csv
 
-Download Link: https://query.data.world/s/42bb8a11rh9kapksqyp7b7ocv
+Download Link: https://query.data.world/s/c8ebqjbjswp7vqlzgkgm5mg0g
 
 ```{r}
-source("../01 Data/Accessdataworld4.R")
+source("../01 Data/Accessdataworld5.R")
 ```
 
 #**Tableau / Tableau Action Generated Visualizations**
@@ -53,6 +53,7 @@ source("../01 Data/Accessdataworld4.R")
 
 #**Shiny Visualization and Published Application**
 **Description:** A static .png of the Shiny application, as well as a link to the live published version. Crosstab 1 sums up the shipping costs by segment and state. The data is filtered on Country = United States and dislays the IN of Two Highest Shipping Segments. Crosstab 2 breaks down the sum of sales by ship mode and state. The color highlights KPI - Sales per person Low to High. Again, the data is filtered on Country = United States and IN for Two Least Used Shipping Mode. Lastly, Crosstab 3 covers sum of sales by sub-category and country. KPI reflects the profit to sales ratio low to high. The data is filtered on IN for Five Highest Sub-Categories.
-Published Link: https://frannyfang.shinyapps.io/shinyactions1/
+Published Link: https://frannyfang.shinyapps.io/crosstab2/ https://frannyfang.shinyapps.io/Crosstab3/ 
 
-![](../03 Visualizations/Shiny.png)</center>
+![](../03 Visualizations/Shiny2.PNG)</center>
+![](../03 Visualizations/Shiny3.PNG)</center>
