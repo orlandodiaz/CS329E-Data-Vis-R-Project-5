@@ -1,0 +1,20 @@
+{
+    "collab_server" : "",
+    "contents" : "token = eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJwcm9kLXVzZXItY2xpZW50OmpsZWUiLCJpc3MiOiJhZ2VudDpqbGVlOjphYTAxYzZmMi1hMTBhLTRhYzQtOTU3Yi1lZmQwNDM4OTI0YzAiLCJpYXQiOjE0ODQ2OTcyMjcsInJvbGUiOlsidXNlcl9hcGlfd3JpdGUiLCJ1c2VyX2FwaV9yZWFkIl0sImdlbmVyYWwtcHVycG9zZSI6dHJ1ZX0.gnpazqWHViw7QcLMWccGADp4i8rmzRFwx7tp3OknW0T4q9JhJFKP46h-mQJL1GKku9rnHN8dXJGQ_WbFPfJiLw\n\n",
+    "created" : 1492405364361.000,
+    "dirty" : false,
+    "encoding" : "UTF-8",
+    "folds" : "",
+    "hash" : "2284860458",
+    "id" : "F19E7470",
+    "lastKnownWriteTime" : 1492405368,
+    "last_content_update" : 1492405368078,
+    "path" : "~/DV_Project5/02 Shiny/www/.data.world",
+    "project_path" : "02 Shiny/www/.data.world",
+    "properties" : {
+    },
+    "relative_order" : 5,
+    "source_on_save" : false,
+    "source_window" : "",
+    "type" : "text"
+}

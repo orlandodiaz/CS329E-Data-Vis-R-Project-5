@@ -19,8 +19,8 @@ shinyServer(function(input, output) {
       print("Getting from data.world")
       query(
         data.world(propsfile = "www/.data.world"),
-        dataset="jlee/S17 DV Project 5", type="sql",
-        query="select Category, State, 
+        dataset="jlee/s-17-dv-project-5", type="sql",
+        query="select `Sub-Category`, `Country`, 
         sum(Profit) as sum_profit, 
         sum(Sales) as sum_sales, 
         sum(Profit) / sum(Sales) as ratio,
@@ -31,25 +31,18 @@ shinyServer(function(input, output) {
         else '01 High'
         end AS kpi
         
-        from SuperStoreOrders
-        where Country_Region = 'United States of America' and
-        Category in ('Chairs  and  Chairmats', 'Office Machines', 'Tables', 'Telephones and Communication')
-        group by Category, State
-        order by Category, State",
+        from `globalshipments.csv/globalshipments`
+        group by `Sub-Category`, `Country`
+        order by `Sub-Category`, `Country`",
         queryParameters = list(KPI_Low(), KPI_Medium())
       ) # %>% View()
     }
     else {
       print("Getting from csv")
-      file_path = "www/SuperStoreOrders.csv"
+      file_path = "www/globalshipments.csv"
       df <- readr::read_csv(file_path)
       df %>% 
-        dplyr::filter(Country_Region == 'United States of America', Category %in% 
-                        c('Chairs  and  Chairmats',
-                          'Office Machines',
-                          'Tables',
-                          'Telephones and Communication')) %>%
-        dplyr::group_by(Category, State) %>% 
+        dplyr::group_by(`Sub-Category`, Country) %>% 
         dplyr::summarize(sum_profit = sum(Profit), sum_sales = sum(Sales),
                          ratio = sum(Profit) / sum(Sales),
                          kpi = if_else(ratio <= KPI_Low(), '03 Low',
@@ -61,10 +54,12 @@ shinyServer(function(input, output) {
   )
   })
   output$plot1 <- renderPlot({ggplot(df1()) + 
-      theme(axis.text.x=element_text(angle=90, size=16, vjust=0.5)) + 
-      theme(axis.text.y=element_text(size=16, hjust=0.5)) +
-      geom_text(aes(x=Category, y=State, label=sum_sales), size=6) +
-      geom_tile(aes(x=Category, y=State, fill=kpi), alpha=0.50)
+      theme(axis.text.x=element_text(angle=90, size=15, vjust=0.5)) + 
+      theme(axis.text.y=element_text(size=5, hjust=0.5)) +
+      geom_text(aes(x=`Sub-Category`, y=Country, label=sum_sales), size=2) +
+      geom_tile(aes(x=`Sub-Category`, y=Country, fill=kpi), alpha=0.50)
+      # coord_fixed(ratio = 1)
+      # theme(panel.background = element_rect(size = 150))
   })
   # End Crosstab Tab 1 ___________________________________________________________
   
