@@ -20,34 +20,35 @@ shinyServer(function(input, output) {
       query(
         data.world(propsfile = "www/.data.world"),
         dataset="jlee/s-17-dv-project-5", type="sql",
-        query="select `Sub-Category`, `Country`, 
-        sum(Profit) as sum_profit, 
+        query="select `Ship Mode`, g.State, 
+        sum(population) as sum_pop, 
         sum(Sales) as sum_sales, 
-        sum(Profit) / sum(Sales) as ratio,
+        sum(Sales) / sum(population) as ratio,
         
         case
-        when sum(Profit) / sum(Sales) < ? then '03 Low'
-        when sum(Profit) / sum(Sales) < ? then '02 Medium'
+        when sum(Sales) / sum(population) < ? then '03 Low'
+        when sum(Sales) / sum(population) < ? then '02 Medium'
         else '01 High'
         end AS kpi
         
-        from `globalshipments.csv/globalshipments`
-        group by `Sub-Category`, `Country`
-        order by `Sub-Category`, `Country`",
+        from globalshipments g join `census-pop-sex` c on g.`Country` = c.`Country`
+        where `Ship Mode` in ('First Class', 'Same Day') 
+        group by `Ship Mode`, g.`State`
+        order by `Ship Mode`, g.`State`",
         queryParameters = list(KPI_Low(), KPI_Medium())
       ) # %>% View()
     }
-    else {
-      print("Getting from csv")
-      file_path = "www/globalshipments.csv"
-      df <- readr::read_csv(file_path)
-      df %>% 
-        dplyr::group_by(`Sub-Category`, Country) %>% 
-        dplyr::summarize(sum_profit = sum(Profit), sum_sales = sum(Sales),
-                         ratio = sum(Profit) / sum(Sales),
-                         kpi = if_else(ratio <= KPI_Low(), '03 Low',
-                                       if_else(ratio <= KPI_Medium(), '02 Medium', '01 High'))) # %>% View()
-    }
+    # else {
+    #   print("Getting from csv")
+    #   file_path = "www/globalshipments.csv"
+    #   df <- readr::read_csv(file_path)
+    #   df %>% 
+    #     dplyr::group_by(`Sub-Category`, Country) %>% 
+    #     dplyr::summarize(sum_profit = sum(Profit), sum_sales = sum(Sales),
+    #                      ratio = sum(Profit) / sum(Sales),
+    #                      kpi = if_else(ratio <= KPI_Low(), '03 Low',
+    #                                    if_else(ratio <= KPI_Medium(), '02 Medium', '01 High'))) # %>% View()
+    # }
   })
   output$data1 <- renderDataTable({DT::datatable(df1(), rownames = FALSE,
                                                  extensions = list(Responsive = TRUE, FixedHeader = TRUE)
@@ -55,9 +56,9 @@ shinyServer(function(input, output) {
   })
   output$plot1 <- renderPlot({ggplot(df1()) + 
       theme(axis.text.x=element_text(angle=90, size=15, vjust=0.5)) + 
-      theme(axis.text.y=element_text(size=5, hjust=0.5)) +
-      geom_text(aes(x=`Sub-Category`, y=Country, label=sum_sales), size=2) +
-      geom_tile(aes(x=`Sub-Category`, y=Country, fill=kpi), alpha=0.50)
+      theme(axis.text.y=element_text(size=10, hjust=0.5)) +
+      geom_text(aes(x=`Ship Mode`, y=State, label=sum_sales), size=5) +
+      geom_tile(aes(x=`Ship Mode`, y=State, fill=kpi), alpha=0.50)
       # coord_fixed(ratio = 1)
       # theme(panel.background = element_rect(size = 150))
   })
