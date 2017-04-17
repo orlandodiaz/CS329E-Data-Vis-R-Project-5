@@ -44,13 +44,15 @@ source("../01 Data/Accessdataworld4.R")
 #**Tableau / Tableau Action Generated Visualizations**
 **Descriptions:** Refer to visualization captions for individual descriptions.
 
-![](../03 Visualizations/LitterSizeByOrderandFamily.png)<br><br><br>
-![](../03 Visualizations/Trophiclevel.png)<br><br><br>
-![](../03 Visualizations/Adult-body-mass.png)</center>
+![](../03 Visualizations/Crosstab 1 .png)<br><br><br>
+![](../03 Visualizations/Crosstab 1 Map.png)<br><br><br>
+![](../03 Visualizations/Crosstab 2 .png)</center>
+![](../03 Visualizations/Crosstab 2 Map.png)</center>
+![](../03 Visualizations/Crosstab 3 .png)</center>
+![](../03 Visualizations/Crosstab 3 Map.png)</center>
 
 #**Shiny Visualization and Published Application**
-**Description:** A static .png of the Shiny application, as well as a link to the live published version. Looks at sexual maturity age with respect to max longevity for the orders.
-
+**Description:** A static .png of the Shiny application, as well as a link to the live published version. Crosstab 1 sums up the shipping costs by segment and state. The data is filtered on Country = United States and dislays the IN of Two Highest Shipping Segments. Crosstab 2 breaks down the sum of sales by ship mode and state. The color highlights KPI - Sales per person Low to High. Again, the data is filtered on Country = United States and IN for Two Least Used Shipping Mode. Lastly, Crosstab 3 covers sum of sales by sub-category and country. KPI reflects the profit to sales ratio low to high. The data is filtered on IN for Five Highest Sub-Categories.
 Published Link: https://frannyfang.shinyapps.io/shinyactions1/
 
 ![](../03 Visualizations/Shiny.png)</center>
