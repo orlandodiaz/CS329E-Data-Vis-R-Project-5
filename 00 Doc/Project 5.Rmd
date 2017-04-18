@@ -52,8 +52,12 @@ source("../01 Data/Accessdataworld5.R")
 ![](../03 Visualizations/Crosstab 3 Map.png)</center>
 
 #**Shiny Visualization and Published Application**
-**Description:** A static .png of the Shiny application, as well as a link to the live published version. Crosstab 1 sums up the shipping costs by segment and state. The data is filtered on Country = United States and dislays the IN of Two Highest Shipping Segments. Crosstab 2 breaks down the sum of sales by ship mode and state. The color highlights KPI - Sales per person Low to High. Again, the data is filtered on Country = United States and IN for Two Least Used Shipping Mode. Lastly, Crosstab 3 covers sum of sales by sub-category and country. KPI reflects the profit to sales ratio low to high. The data is filtered on IN for Five Highest Sub-Categories.
-Published Link: https://frannyfang.shinyapps.io/crosstab2/ https://frannyfang.shinyapps.io/Crosstab3/ 
+**Description:** A static .png of the Shiny application, as well as a link to the live published version. Crosstab 1 sums up the shipping costs by segment and state. The data is filtered on Country = United States and dislays the IN of Two Highest Shipping Segments.</br> Crosstab 2 breaks down the sum of sales by ship mode and state. The color highlights KPI - Sales per person Low to High. Again, the data is filtered on Country = United States and IN for Two Least Used Shipping Mode. </br>Lastly, Crosstab 3 covers sum of sales by sub-category and country. KPI reflects the profit to sales ratio low to high. The data is filtered on IN for Five Highest Sub-Categories.</br>
 
+Published Link:</br>
+https://frannyfang.shinyapps.io/crosstab1/</br>
+https://frannyfang.shinyapps.io/crosstab2/</br> https://frannyfang.shinyapps.io/Crosstab3/</br>
+
+![](../03 Visualizations/Shiny1.PNG)</center>
 ![](../03 Visualizations/Shiny2.PNG)</center>
 ![](../03 Visualizations/Shiny3.PNG)</center>
