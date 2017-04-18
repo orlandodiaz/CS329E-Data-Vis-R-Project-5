@@ -1,0 +1,58 @@
+"0","```r
+source(\"../01 Data/Accessdataworld5.R\")
+```"
+"1","     Row ID         Order ID           Order Date           Ship Date           Ship Mode        
+ Min.   : 5354   Min.   :2.014e+16   Min.   :2012-03-06   Min.   :2012-03-07   Length:10         
+ 1st Qu.:17781   1st Qu.:2.012e+17   1st Qu.:2013-02-18   1st Qu.:2013-02-24   Class :character  
+ Median :31296   Median :2.015e+17   Median :2014-07-25   Median :2014-07-30   Mode  :character  
+ Mean   :28958   Mean   :7.087e+17   Mean   :2014-02-13   Mean   :2014-02-17                     
+ 3rd Qu.:39596   3rd Qu.:1.559e+18   3rd Qu.:2014-11-02   3rd Qu.:2014-11-04                     
+ Max.   :48761   Max.   :2.014e+18   Max.   :2015-11-17   Max.   :2015-11-22                     
+                                                                                                 
+  Customer ID        Customer Name        Segment           Postal Code        City          
+ Min.   :   162107   Length:10          Length:10          Min.   :73120   Length:10         
+ 1st Qu.:  1180038   Class :character   Class :character   1st Qu.:75811   Class :character  
+ Median :  1926296   Mode  :character   Mode  :character   Median :78501   Mode  :character  
+ Mean   : 33322011                                         Mean   :83241                     
+ 3rd Qu.: 76047331                                         3rd Qu.:88302                     
+ Max.   :122051402                                         Max.   :98103                     
+                                                           NA's   :7                         
+    State             Country             Region             Market            Product ID  
+ Length:10          Length:10          Length:10          Length:10          Min.   :4266  
+ Class :character   Class :character   Class :character   Class :character   1st Qu.:4792  
+ Mode  :character   Mode  :character   Mode  :character   Mode  :character   Median :5303  
+                                                                             Mean   :5273  
+                                                                             3rd Qu.:5619  
+                                                                             Max.   :6506  
+                                                                                           
+   Category         Sub-Category       Product Name           Sales            Quantity   
+ Length:10          Length:10          Length:10          Min.   :   5.18   Min.   :0.00  
+ Class :character   Class :character   Class :character   1st Qu.: 248.38   1st Qu.:2.00  
+ Mode  :character   Mode  :character   Mode  :character   Median : 397.37   Median :2.00  
+                                                          Mean   :1043.57   Mean   :3.00  
+                                                          3rd Qu.: 896.57   3rd Qu.:3.75  
+                                                          Max.   :3856.14   Max.   :8.00  
+                                                                                          
+    Discount         Profit        Shipping Cost    Order Priority    
+ Min.   :0.000   Min.   :   1.81   Min.   :  1.50   Length:10         
+ 1st Qu.:0.000   1st Qu.:  43.47   1st Qu.: 25.94   Class :character  
+ Median :0.100   Median :  84.95   Median : 32.88   Mode  :character  
+ Mean   :0.097   Mean   : 237.37   Mean   : 93.67                     
+ 3rd Qu.:0.175   3rd Qu.: 192.13   3rd Qu.: 38.80                     
+ Max.   :0.270   Max.   :1465.20   Max.   :533.00                     
+                                                                      
+   Country             State             AreaName           population           male        
+ Length:10          Length:10          Length:10          Min.   : 733375   Min.   : 384160  
+ Class :character   Class :character   Class :character   1st Qu.:3397374   1st Qu.:1654081  
+ Mode  :character   Mode  :character   Mode  :character   Median :5124896   Median :2516630  
+                                                          Mean   :4910422   Mean   :2406373  
+                                                          3rd Qu.:6464080   3rd Qu.:3155398  
+                                                          Max.   :9900571   Max.   :4861973  
+     female       
+ Min.   : 349215  
+ 1st Qu.:1743293  
+ Median :2608266  
+ Mean   :2504049  
+ 3rd Qu.:3271604  
+ Max.   :5038598  
+"
