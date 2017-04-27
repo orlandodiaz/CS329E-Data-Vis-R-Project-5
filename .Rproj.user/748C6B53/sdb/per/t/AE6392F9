@@ -1,0 +1,20 @@
+{
+    "collab_server" : "",
+    "contents" : "# server.R\nrequire(ggplot2)\nrequire(dplyr)\nrequire(shiny)\nrequire(shinydashboard)\nrequire(data.world)\nrequire(readr)\nrequire(DT)\n\nshinyServer(function(input, output) { \n  # These widgets are for the Crosstabs tab.\n  online1 = reactive({input$rb1})\n  KPI_Low = reactive({input$KPI1})     \n  KPI_Medium = reactive({input$KPI2})\n  #1. columns = segements + state [global shipments]\n  \n  #filter by country UNITED StATES and keep states\n  \n  #calculated field = kpi avg shipping cost ( sum of shipping cost / sum of quantity)\n  \n  # Begin Crosstab Tab 1 ------------------------------------------------------------------\n  df1 <- eventReactive(input$click1, {\n    if(online1() == \"SQL\") {\n      print(\"Getting from data.world\")\n      query(\n        data.world(propsfile = \"www/.data.world\"),\n        dataset=\"jlee/s-17-dv-project-5\", type=\"sql\",\n        query=\"select Segment, g.State,\n        \n        sum(`Shipping Cost`) as sum_shipcost,\n        sum(Quantity) as sum_quant, \n        sum(`Shipping Cost`) / sum(Quantity) as ratio,\n        \n        case\n        when sum(`Shipping Cost`) / sum(Quantity) < ? then '03 Low'\n        when  sum(`Shipping Cost`) / sum(Quantity) < ? then '02 Medium'\n        else '01 High'\n        end AS kpi\n        \n        from globalshipments g join `census-pop-sex` c on g.`Country` = c.`Country`\n        where Segment in ('Consumer', 'Corporate') \n        group by Segment, g.`State`\n        order by g.`State`\",\n        queryParameters = list(KPI_Low(), KPI_Medium())\n      ) # %>% View()\n    }\n    # else {\n    #   print(\"Getting from csv\")\n    #   file_path = \"www/globalshipments.csv\"\n    #   df <- readr::read_csv(file_path)\n    #   df %>% \n    #     dplyr::group_by(`Sub-Category`, Country) %>% \n    #     dplyr::summarize(sum_profit = sum(Profit), sum_sales = sum(Sales),\n    #                      ratio = sum(Profit) / sum(Sales),\n    #                      kpi = if_else(ratio <= KPI_Low(), '03 Low',\n    #                                    if_else(ratio <= KPI_Medium(), '02 Medium', '01 High'))) # %>% View()\n    # }\n  })\n  output$data1 <- renderDataTable({DT::datatable(df1(), rownames = FALSE,\n                                                 extensions = list(Responsive = TRUE, FixedHeader = TRUE)\n  )\n  })\n  output$plot1 <- renderPlot({ggplot(df1()) + \n      theme(axis.text.x=element_text(angle=90, size=15, vjust=0.5)) + \n      theme(axis.text.y=element_text(size=10, hjust=0.5)) +\n      geom_text(aes(x=`Segment`, y=State, label=sum_shipcost), size=5) +\n      geom_tile(aes(x=`Segment`, y=State, fill=kpi), alpha=0.50)\n      # coord_fixed(ratio = 1)\n      # theme(panel.background = element_rect(size = 150))\n  })\n  # End Crosstab Tab 1 ___________________________________________________________\n  \n  })\n",
+    "created" : 1492482342232.000,
+    "dirty" : false,
+    "encoding" : "UTF-8",
+    "folds" : "",
+    "hash" : "3553579020",
+    "id" : "AE6392F9",
+    "lastKnownWriteTime" : 1492481880,
+    "last_content_update" : 1492481880,
+    "path" : "~/DV_Project5/02 Shiny/Crosstab1/server.R",
+    "project_path" : "02 Shiny/Crosstab1/server.R",
+    "properties" : {
+    },
+    "relative_order" : 2,
+    "source_on_save" : false,
+    "source_window" : "",
+    "type" : "r_source"
+}
